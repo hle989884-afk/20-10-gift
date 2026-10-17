@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#fff0f3">
+<meta name="description" content="Một lời chúc nhỏ dành riêng cho Huyên nhân ngày 20/10.">
+<title>Một điều nhỏ dành cho Huyên ♡</title>
+<style>
+:root{--rose:#d85d78;--deep:#77394d;--pink:#fff0f3;--cream:#fffaf7;--soft:#f8dce3;--ink:#62434b}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:linear-gradient(160deg,#fff8f6,#ffeaf0 55%,#fff7f2);color:var(--ink);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
+button{font:inherit}
+.hero{min-height:100svh;display:grid;place-items:center;padding:28px 18px;position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 20% 20%,#fff 0,transparent 35%),radial-gradient(ellipse at 85% 75%,#f8cbd8 0,transparent 38%),linear-gradient(135deg,#fff4f1,#ffe4eb 58%,#fff8f1)}
+.hero:before,.hero:after{content:"";position:absolute;border:1px solid #e9aab9;border-radius:50%;width:280px;height:280px;opacity:.3;z-index:-1}
+.hero:before{top:-140px;left:-100px}.hero:after{bottom:-160px;right:-80px;width:350px;height:350px}
+.card{width:min(100%,560px);text-align:center;padding:clamp(28px,7vw,58px) clamp(20px,6vw,48px);border:1px solid #f2c5d0;border-radius:28px;background:rgba(255,250,248,.82);box-shadow:0 18px 60px #b75a7217;backdrop-filter:blur(8px);position:relative}
+.eyebrow{font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;color:#b86a7e}
+h1,h2,.script{font-family:Georgia,'Times New Roman',serif;font-weight:400}
+h1{font-size:clamp(2.8rem,11vw,5.4rem);line-height:1.05;color:var(--rose);margin:16px 0}
+.sub{font-family:Georgia,serif;font-size:clamp(1.05rem,4vw,1.35rem);line-height:1.65;margin:0 auto 26px;max-width:390px}
+.flower{font-size:2rem;display:block;margin:8px}
+.btn{border:0;border-radius:999px;background:var(--rose);color:white;padding:14px 25px;cursor:pointer;box-shadow:0 8px 20px #d85d7833;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px);background:#c84d69}.btn:focus-visible{outline:3px solid #9f3f58;outline-offset:4px}
+.small{font-size:.85rem;color:#9b727d;margin-top:18px}
+.petal{position:fixed;top:-35px;z-index:5;pointer-events:none;animation:fall linear forwards;opacity:.8}
+@keyframes fall{to{transform:translate3d(var(--drift),110vh,0) rotate(560deg);opacity:.1}}
+main{max-width:850px;margin:auto;padding:26px 18px 70px}
+.section{margin:24px 0;padding:clamp(24px,6vw,48px);border-radius:26px;background:rgba(255,252,249,.9);border:1px solid #f5d5dc;box-shadow:0 12px 35px #9d52610c}
+.section h2{text-align:center;color:var(--rose);font-size:clamp(1.8rem,7vw,2.7rem);margin:0 0 22px}
+.letter{font-family:Georgia,serif;line-height:1.95;font-size:1.06rem;white-space:pre-line;text-align:center}
+.rule{width:65px;height:1px;background:#e8a5b5;margin:24px auto}
+.wishes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.wish{border:1px solid #f2cbd4;background:#fff6f6;border-radius:18px;padding:20px 16px;line-height:1.6;text-align:center}
+.wish .emoji{font-size:1.6rem;display:block;margin-bottom:8px}
+.end{background:linear-gradient(160deg,#302c50,#5a4569 55%,#ce8195);color:#fff7f7;text-align:center;overflow:hidden;position:relative}
+.end h2{color:#ffe0e7}.end .letter{position:relative;z-index:1}
+.signature{font-family:Georgia,serif;font-style:italic;font-size:1.15rem;color:#ffe0e7;margin-top:25px}
+.controls{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:18px}
+.foot{text-align:center;color:#a57d87;font-size:.82rem;padding:5px 15px 30px}
+@media(max-width:560px){.wishes{grid-template-columns:1fr}.section{border-radius:20px}.card{border-radius:24px}.hero{padding:16px}.letter{font-size:1rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition:none!important}}
+</style>
+</head>
+<body>
+<section class="hero" id="top">
+  <div class="card">
+    <span class="flower" aria-hidden="true">🌷</span>
+    <div class="eyebrow">A little note for you</div>
+    <h1>Hey Huyên,</h1>
+    <p class="sub">There’s a little surprise<br>waiting for you…</p>
+    <span class="flower" aria-hidden="true">♡</span>
+    <button class="btn" id="openBtn">Bắt đầu nhé ♡</button>
+    <div class="small">Một món quà nhỏ cho ngày 20/10</div>
+  </div>
+</section>
+<main id="message" hidden>
+  <section class="section">
+    <h2>Chúc Huyên ♡</h2>
+    <div class="letter">Nhân ngày 20/10, chúc Huyên luôn vui vẻ, mạnh khỏe và luôn là chính mình — một cô gái thật đặc biệt theo cách riêng.
+
+Mong rằng cậu sẽ luôn gặp những điều tốt đẹp, được yêu thương, được trân trọng và có thật nhiều niềm vui trong cuộc sống.
+
+Nếu có ngày nào hơi mệt, mong cậu vẫn tìm được một điều nhỏ bé khiến mình mỉm cười. Cậu xứng đáng với những điều dịu dàng và tử tế nhất.
+
+Chúc Huyên có một ngày 20/10 thật xinh đẹp, ấm áp và đáng nhớ nhé!</div>
+    <div class="rule"></div>
+    <p class="script" style="text-align:center;color:#d85d78;font-style:italic;font-size:1.15rem">Happy Vietnamese Women’s Day 20/10 ♡</p>
+  </section>
+  <section class="section">
+    <h2>Những điều nhỏ xinh dành cho Huyên</h2>
+    <div class="wishes">
+      <div class="wish"><span class="emoji">🌸</span>Cậu xứng đáng với những điều tốt đẹp nhất.</div>
+      <div class="wish"><span class="emoji">♡</span>Hãy luôn mỉm cười, vì nụ cười của cậu rất đẹp.</div>
+      <div class="wish"><span class="emoji">🌷</span>Đừng quên chăm sóc bản thân và làm điều cậu yêu thích.</div>
+      <div class="wish"><span class="emoji">☀️</span>Mong ngày mai luôn có điều gì đó khiến cậu háo hức.</div>
+    </div>
+  </section>
+  <section class="section end">
+    <span class="flower">☾ ✧</span>
+    <h2>Một lời nhắn nhỏ</h2>
+    <div class="letter">Có những người xuất hiện trong cuộc sống này không phải để thay đổi cả thế giới, mà chỉ để khiến những ngày bình thường trở nên đặc biệt hơn.
+
+Chúc Huyên một ngày 20/10 thật hạnh phúc và luôn rạng rỡ nhé!</div>
+    <div class="signature">From someone who wishes you well ♡</div>
+    <div class="controls">
+      <button class="btn" id="musicBtn" aria-pressed="false">♫ Bật piano nhẹ</button>
+      <button class="btn" id="backBtn" style="background:#8a6270">Đọc lại từ đầu ↑</button>
+    </div>
+    <p class="small" style="color:#f4d8df">Nhạc chỉ phát khi cậu nhấn nút.</p>
+  </section>
+</main>
+<div class="foot">Made with a little kindness ♡</div>
+<script>
+const openBtn=document.getElementById('openBtn');
+const message=document.getElementById('message');
+openBtn.addEventListener('click',()=>{
+  message.hidden=false;
+  message.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+  petals(22);
+});
+document.getElementById('backBtn').addEventListener('click',()=>document.getElementById('top').scrollIntoView({behavior:'smooth'}));
+function petals(n=8){
+  const symbols=['♡','🌸','✿','🌷'];
+  for(let i=0;i<n;i++){
+    const p=document.createElement('span');p.className='petal';p.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    p.style.left=Math.random()*100+'vw';p.style.fontSize=(12+Math.random()*15)+'px';
+    p.style.setProperty('--drift',(Math.random()*180-90)+'px');
+    p.style.animationDuration=(5+Math.random()*6)+'s';p.style.animationDelay=(Math.random()*1.5)+'s';
+    document.body.appendChild(p);setTimeout(()=>p.remove(),12500);
+  }
+}
+setInterval(()=>{if(!document.hidden && !message.hidden)petals(2)},4200);
+let audioCtx=null, musicTimer=null, musicOn=false, noteIndex=0;
+const notes=[523.25,659.25,783.99,659.25,587.33,698.46,880,698.46,523.25,659.25,783.99,1046.5];
+function playNote(freq){
+  if(!audioCtx)return;
+  const now=audioCtx.currentTime, osc=audioCtx.createOscillator(), gain=audioCtx.createGain();
+  osc.type='sine';osc.frequency.setValueAtTime(freq,now);
+  gain.gain.setValueAtTime(0.0001,now);gain.gain.exponentialRampToValueAtTime(0.055,now+.025);gain.gain.exponentialRampToValueAtTime(0.0001,now+.8);
+  osc.connect(gain);gain.connect(audioCtx.destination);osc.start(now);osc.stop(now+.85);
+}
+const musicBtn=document.getElementById('musicBtn');
+musicBtn.addEventListener('click',async()=>{
+  if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+  if(audioCtx.state==='suspended')await audioCtx.resume();
+  musicOn=!musicOn;
+  if(musicOn){
+    musicBtn.textContent='♫ Tắt piano';musicBtn.setAttribute('aria-pressed','true');
+    playNote(notes[noteIndex++%notes.length]);musicTimer=setInterval(()=>playNote(notes[noteIndex++%notes.length]),650);
+  }else{
+    clearInterval(musicTimer);musicTimer=null;musicBtn.textContent='♫ Bật piano nhẹ';musicBtn.setAttribute('aria-pressed','false');
+  }
+});
+</script>
+</body>
+</html>
