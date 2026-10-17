@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#fff0f3">
-<meta name="description" content="Một lời chúc nhỏ dành riêng cho Huyên nhân ngày 20/10.">
+<meta name="description" content="Một món quà nhỏ được Lê Hoàng Vũ tạo riêng dành tặng Huyên nhân ngày 20/10.">
 <title>Một điều nhỏ dành cho Huyên ♡</title>
 <style>
 :root{--rose:#d85d78;--deep:#77394d;--pink:#fff0f3;--cream:#fffaf7;--soft:#f8dce3;--ink:#62434b}
@@ -12,6 +12,7 @@
 html{scroll-behavior:smooth}
 body{margin:0;background:linear-gradient(160deg,#fff8f6,#ffeaf0 55%,#fff7f2);color:var(--ink);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden}
 button{font:inherit}
+[hidden]{display:none!important}
 .hero{min-height:100svh;display:grid;place-items:center;padding:28px 18px;position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 20% 20%,#fff 0,transparent 35%),radial-gradient(ellipse at 85% 75%,#f8cbd8 0,transparent 38%),linear-gradient(135deg,#fff4f1,#ffe4eb 58%,#fff8f1)}
 .hero:before,.hero:after{content:"";position:absolute;border:1px solid #e9aab9;border-radius:50%;width:280px;height:280px;opacity:.3;z-index:-1}
 .hero:before{top:-140px;left:-100px}.hero:after{bottom:-160px;right:-80px;width:350px;height:350px}
@@ -27,7 +28,10 @@ h1{font-size:clamp(2.8rem,11vw,5.4rem);line-height:1.05;color:var(--rose);margin
 .petal{position:fixed;top:-35px;z-index:5;pointer-events:none;animation:fall linear forwards;opacity:.8}
 @keyframes fall{to{transform:translate3d(var(--drift),110vh,0) rotate(560deg);opacity:.1}}
 main{max-width:850px;margin:auto;padding:26px 18px 70px}
-.section{margin:24px 0;padding:clamp(24px,6vw,48px);border-radius:26px;background:rgba(255,252,249,.9);border:1px solid #f5d5dc;box-shadow:0 12px 35px #9d52610c}
+.section{margin:24px 0;padding:clamp(24px,6vw,48px);border-radius:26px;background:rgba(255,252,249,.9);border:1px solid #f5d5dc;box-shadow:0 12px 35px #9d52610c;animation:riseIn .9s ease both}
+@keyframes riseIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.card{animation:cardIn .8s ease both}
+@keyframes cardIn{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
 .section h2{text-align:center;color:var(--rose);font-size:clamp(1.8rem,7vw,2.7rem);margin:0 0 22px}
 .letter{font-family:Georgia,serif;line-height:1.95;font-size:1.06rem;white-space:pre-line;text-align:center}
 .rule{width:65px;height:1px;background:#e8a5b5;margin:24px auto}
@@ -44,63 +48,99 @@ main{max-width:850px;margin:auto;padding:26px 18px 70px}
 </style>
 </head>
 <body>
-<section class="hero" id="top">
+<section class="hero" id="introScreen">
+  <div class="card">
+    <span class="flower" aria-hidden="true">✦ ♡ ✦</span>
+    <div class="eyebrow">Trước khi mở món quà</div>
+    <h1 style="font-size:clamp(2.1rem,8vw,3.6rem)">Lê Hoàng Vũ</h1>
+    <div class="rule"></div>
+    <p class="sub">Anh hơi ngại nên chưa dám gặp em để tặng quà trực tiếp. Thế nên anh làm trang web nhỏ này dành riêng cho em. Anh chỉ muốn gửi em một lời chúc theo cách của riêng mình thôi.</p>
+    <span class="flower" aria-hidden="true">🌷</span>
+    <button class="btn" id="continueBtn">Tiếp tục nhé ♡</button>
+    <div class="small">Anh đã dành chút thời gian làm điều này cho em</div>
+  </div>
+</section>
+<section class="hero" id="top" hidden>
   <div class="card">
     <span class="flower" aria-hidden="true">🌷</span>
-    <div class="eyebrow">A little note for you</div>
-    <h1>Hey Huyên,</h1>
-    <p class="sub">There’s a little surprise<br>waiting for you…</p>
+    <div class="eyebrow">Một lời nhắn dành cho em</div>
+    <h1>Huyên à,</h1>
+    <p class="sub">Anh có vài lời muốn gửi em…</p>
     <span class="flower" aria-hidden="true">♡</span>
-    <button class="btn" id="openBtn">Bắt đầu nhé ♡</button>
-    <div class="small">Một món quà nhỏ cho ngày 20/10</div>
+    <button class="btn" id="openBtn">♡ Chạm để mở món quà ♡</button>
+    <div class="small">Bật âm thanh để nghe giai điệu dịu dàng nhé</div>
   </div>
 </section>
 <main id="message" hidden>
   <section class="section">
     <h2>Chúc Huyên ♡</h2>
-    <div class="letter">Nhân ngày 20/10, chúc Huyên luôn vui vẻ, mạnh khỏe và luôn là chính mình — một cô gái thật đặc biệt theo cách riêng.
+    <div class="letter">Huyên à,
 
-Mong rằng cậu sẽ luôn gặp những điều tốt đẹp, được yêu thương, được trân trọng và có thật nhiều niềm vui trong cuộc sống.
+Chúc em 20/10 thật vui nha. Mong em luôn khỏe mạnh, gặp nhiều chuyện vui và có thời gian làm những điều mình thích.
 
-Nếu có ngày nào hơi mệt, mong cậu vẫn tìm được một điều nhỏ bé khiến mình mỉm cười. Cậu xứng đáng với những điều dịu dàng và tử tế nhất.
+Anh không biết phải nói sao cho hay, nên thử làm một trang web nhỏ này để gửi lời chúc đến em. Anh làm nó chỉ dành riêng cho em thôi. Có thể món quà này hơi khác một chút, nhưng anh đã tự làm và hy vọng em sẽ thích.
 
-Chúc Huyên có một ngày 20/10 thật xinh đẹp, ấm áp và đáng nhớ nhé!</div>
+Thật ra anh hơi ngại, nên chưa đủ can đảm để gặp em rồi đưa quà trực tiếp. Vì vậy anh chọn cách này để gửi lời chúc. Anh biết mình vẫn còn nhiều điều phải học, nhưng anh muốn thử làm một điều gì đó tử tế thay vì chỉ nghĩ trong đầu.
+
+Em không cần phải trả lời hay làm gì để đáp lại đâu nhé. Anh chỉ mong lúc xem trang này, em thấy vui một chút là anh đã vui rồi.
+
+Chúc em luôn có những người bạn tốt bên cạnh, học tập thuận lợi, làm được những điều em mong muốn và đừng quên dành thời gian chăm sóc bản thân nữa. Mong những ngày sắp tới của em sẽ có nhiều điều dễ thương.
+
+Chúc em có một ngày 20/10 thật vui vẻ nha, Huyên ♡</div>
     <div class="rule"></div>
-    <p class="script" style="text-align:center;color:#d85d78;font-style:italic;font-size:1.15rem">Happy Vietnamese Women’s Day 20/10 ♡</p>
+    <p class="script" style="text-align:center;color:#d85d78;font-style:italic;font-size:1.15rem">Chúc mừng ngày Phụ nữ Việt Nam 20/10 ♡</p>
   </section>
   <section class="section">
     <h2>Những điều nhỏ xinh dành cho Huyên</h2>
     <div class="wishes">
-      <div class="wish"><span class="emoji">🌸</span>Cậu xứng đáng với những điều tốt đẹp nhất.</div>
-      <div class="wish"><span class="emoji">♡</span>Hãy luôn mỉm cười, vì nụ cười của cậu rất đẹp.</div>
-      <div class="wish"><span class="emoji">🌷</span>Đừng quên chăm sóc bản thân và làm điều cậu yêu thích.</div>
-      <div class="wish"><span class="emoji">☀️</span>Mong ngày mai luôn có điều gì đó khiến cậu háo hức.</div>
+      <div class="wish"><span class="emoji">🌸</span>Mong những điều tốt đẹp sẽ đến với em.</div>
+      <div class="wish"><span class="emoji">♡</span>Mong em có thật nhiều lý do để mỉm cười.</div>
+      <div class="wish"><span class="emoji">🌷</span>Nhớ ăn uống đầy đủ, nghỉ ngơi và làm những điều em thích nhé.</div>
+      <div class="wish"><span class="emoji">☀️</span>Mong mỗi ngày đều có một chuyện nhỏ khiến em vui.</div>
     </div>
   </section>
   <section class="section end">
     <span class="flower">☾ ✧</span>
     <h2>Một lời nhắn nhỏ</h2>
-    <div class="letter">Có những người xuất hiện trong cuộc sống này không phải để thay đổi cả thế giới, mà chỉ để khiến những ngày bình thường trở nên đặc biệt hơn.
+    <div class="letter">Vậy là em đã xem hết món quà nhỏ của anh rồi. Cảm ơn em đã dành thời gian ghé qua nhé.
 
-Chúc Huyên một ngày 20/10 thật hạnh phúc và luôn rạng rỡ nhé!</div>
-    <div class="signature">From someone who wishes you well ♡</div>
+Anh chỉ mong em luôn vui vẻ, bình an và gặp được nhiều điều tốt đẹp. Mong việc học của em thuận lợi, những điều em mong chờ sẽ dần thành hiện thực, và mỗi ngày đều có ít nhất một chuyện nhỏ khiến em mỉm cười.
+
+Còn có một điều anh muốn nói thật lòng. Anh biết mình vẫn còn nhiều thiếu sót và có những điều cần thay đổi. Anh không dám hứa rằng mình sẽ trở thành một người hoàn hảo, nhưng anh sẽ cố gắng từng ngày để trở thành phiên bản tốt hơn của chính mình.
+
+Anh không mong em phải tin vào những lời anh nói ngay lúc này. Anh chỉ mong thời gian có thể cho anh cơ hội chứng minh bằng những việc mình làm. Nếu trong lòng em cũng có một chút mong muốn tìm hiểu anh, anh hy vọng em có thể cho anh cơ hội ấy. Còn nếu em chưa sẵn sàng hoặc không có cùng cảm xúc, anh vẫn tôn trọng điều đó. Anh không muốn em cảm thấy mình phải chờ đợi hay có trách nhiệm với tình cảm của anh.
+
+Anh chỉ muốn thành thật rằng anh thật sự mong một ngày nào đó, nếu em cũng muốn, anh có thể ở bên em bằng sự chân thành và trưởng thành hơn hôm nay.
+
+Dù thế nào đi nữa, chúc em có một ngày 20/10 thật vui nha, Huyên. Hãy luôn chăm sóc bản thân, làm những điều em yêu thích và đừng quên rằng em xứng đáng với những điều tử tế. Mong những ngày sắp tới sẽ dịu dàng với em. ♡</div>
+    <div class="signature">— Hoàng Vũ ♡</div>
     <div class="controls">
-      <button class="btn" id="musicBtn" aria-pressed="false">♫ Bật piano nhẹ</button>
+      <button class="btn" id="musicBtn" aria-pressed="false">♫ Bật nhạc piano</button>
       <button class="btn" id="backBtn" style="background:#8a6270">Đọc lại từ đầu ↑</button>
     </div>
-    <p class="small" style="color:#f4d8df">Nhạc chỉ phát khi cậu nhấn nút.</p>
+    <p class="small" style="color:#f4d8df">Cảm ơn em đã ghé qua món quà nhỏ này ♡</p>
   </section>
 </main>
-<div class="foot">Made with a little kindness ♡</div>
+<div class="foot">Được tạo nên bằng một chút chân thành ♡</div>
 <script>
+const introScreen=document.getElementById('introScreen');
+const continueBtn=document.getElementById('continueBtn');
+const topScreen=document.getElementById('top');
+continueBtn.addEventListener('click',()=>{
+  introScreen.hidden=true;
+  topScreen.hidden=false;
+  topScreen.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+  petals(10);
+});
 const openBtn=document.getElementById('openBtn');
 const message=document.getElementById('message');
-openBtn.addEventListener('click',()=>{
+openBtn.addEventListener('click',async()=>{
+  await startMusic();
   message.hidden=false;
   message.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
   petals(22);
 });
-document.getElementById('backBtn').addEventListener('click',()=>document.getElementById('top').scrollIntoView({behavior:'smooth'}));
+document.getElementById('backBtn').addEventListener('click',()=>{message.hidden=true;topScreen.hidden=false;topScreen.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});});
 function petals(n=8){
   const symbols=['♡','🌸','✿','🌷'];
   for(let i=0;i<n;i++){
@@ -113,25 +153,57 @@ function petals(n=8){
 }
 setInterval(()=>{if(!document.hidden && !message.hidden)petals(2)},4200);
 let audioCtx=null, musicTimer=null, musicOn=false, noteIndex=0;
-const notes=[523.25,659.25,783.99,659.25,587.33,698.46,880,698.46,523.25,659.25,783.99,1046.5];
-function playNote(freq){
+// Giai điệu tự tạo: chậm, ấm áp, có giai điệu chính và hợp âm rải nền.
+// Âm lượng được tăng nhẹ nhưng vẫn giữ ở mức dễ nghe trên điện thoại.
+const melody=[659.25,587.33,523.25,587.33,659.25,783.99,698.46,659.25,587.33,523.25,440,523.25,587.33,659.25,587.33,523.25];
+const chords=[
+  [261.63,329.63,392.00], [220.00,261.63,329.63],
+  [174.61,220.00,261.63], [196.00,246.94,293.66]
+];
+function playTone(freq, when, duration, volume, shape='sine'){
   if(!audioCtx)return;
-  const now=audioCtx.currentTime, osc=audioCtx.createOscillator(), gain=audioCtx.createGain();
-  osc.type='sine';osc.frequency.setValueAtTime(freq,now);
-  gain.gain.setValueAtTime(0.0001,now);gain.gain.exponentialRampToValueAtTime(0.055,now+.025);gain.gain.exponentialRampToValueAtTime(0.0001,now+.8);
-  osc.connect(gain);gain.connect(audioCtx.destination);osc.start(now);osc.stop(now+.85);
+  const osc=audioCtx.createOscillator(), gain=audioCtx.createGain();
+  osc.type=shape;osc.frequency.setValueAtTime(freq,when);
+  gain.gain.setValueAtTime(0.0001,when);
+  gain.gain.exponentialRampToValueAtTime(volume,when+0.045);
+  gain.gain.exponentialRampToValueAtTime(0.0001,when+duration);
+  osc.connect(gain);gain.connect(audioCtx.destination);
+  osc.start(when);osc.stop(when+duration+0.03);
+}
+function playMusicStep(){
+  if(!audioCtx||!musicOn)return;
+  const now=audioCtx.currentTime, i=noteIndex%melody.length;
+  // Giai điệu chính dịu dàng, dài hơi hơn tiếng bíp đơn trước đây.
+  playTone(melody[i],now,0.92,0.085,'triangle');
+  playTone(melody[i]*2,now,0.52,0.012,'sine');
+  // Hợp âm rải nhẹ tạo cảm giác đầy đặn, lãng mạn hơn.
+  const chord=chords[Math.floor(noteIndex/4)%chords.length];
+  playTone(chord[noteIndex%3],now,1.12,0.035,'sine');
+  if(noteIndex%2===0)playTone(chord[(noteIndex+1)%3],now+0.18,0.88,0.024,'sine');
+  if(noteIndex%4===0)playTone(chord[2]*0.5,now,1.45,0.025,'sine');
+  noteIndex++;
 }
 const musicBtn=document.getElementById('musicBtn');
-musicBtn.addEventListener('click',async()=>{
-  if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();
-  if(audioCtx.state==='suspended')await audioCtx.resume();
-  musicOn=!musicOn;
-  if(musicOn){
-    musicBtn.textContent='♫ Tắt piano';musicBtn.setAttribute('aria-pressed','true');
-    playNote(notes[noteIndex++%notes.length]);musicTimer=setInterval(()=>playNote(notes[noteIndex++%notes.length]),650);
-  }else{
-    clearInterval(musicTimer);musicTimer=null;musicBtn.textContent='♫ Bật piano nhẹ';musicBtn.setAttribute('aria-pressed','false');
+async function startMusic(){
+  if(musicOn)return;
+  try{
+    if(!audioCtx)audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+    if(audioCtx.state==='suspended')await audioCtx.resume();
+    musicOn=true;
+    musicBtn.textContent='♫ Tắt nhạc';musicBtn.setAttribute('aria-pressed','true');
+    playMusicStep();
+    musicTimer=setInterval(playMusicStep,620);
+  }catch(e){
+    musicOn=false;
+    musicBtn.textContent='♫ Bật nhạc piano';musicBtn.setAttribute('aria-pressed','false');
   }
+}
+function stopMusic(){
+  musicOn=false;clearInterval(musicTimer);musicTimer=null;
+  musicBtn.textContent='♫ Bật nhạc piano';musicBtn.setAttribute('aria-pressed','false');
+}
+musicBtn.addEventListener('click',async()=>{
+  if(musicOn)stopMusic();else await startMusic();
 });
 </script>
 </body>
