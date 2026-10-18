@@ -408,6 +408,80 @@ p {
 }
 
 
+
+/* Birthday password gate */
+/* Hide every gift element until the password is accepted. */
+body:not(.gift-unlocked) main,
+body:not(.gift-unlocked) #progress,
+body:not(.gift-unlocked) #musicButton,
+body:not(.gift-unlocked) #musicCaption,
+body:not(.gift-unlocked) .bloom-transition,
+body:not(.gift-unlocked) .sky-finale {
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+body:not(.gift-unlocked) { overflow: hidden; }
+
+.password-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  padding: 28px 22px;
+  background:
+    radial-gradient(ellipse at 50% 15%, #63364e 0%, transparent 54%),
+    linear-gradient(155deg, #190d19, #291427 65%, #120a14);
+  transition: opacity .55s ease, visibility .55s ease;
+}
+.password-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.password-card {
+  width: min(100%, 390px);
+  text-align: center;
+}
+.password-card .lock-flower {
+  font-size: 48px;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 0 18px #f3b4c544);
+}
+.password-card h2 {
+  font-size: clamp(42px, 10vw, 58px);
+  margin: 14px 0;
+}
+.password-card p {
+  font-size: 13px;
+}
+.password-input {
+  display: block;
+  width: min(100%, 260px);
+  margin: 22px auto 12px;
+  padding: 14px 18px;
+  border: 1px solid #e7b5c788;
+  border-radius: 999px;
+  outline: none;
+  background: #ffffff0c;
+  color: var(--cream);
+  text-align: center;
+  font: 18px "Be Vietnam Pro", sans-serif;
+  letter-spacing: 3px;
+}
+.password-input:focus { border-color: var(--gold); }
+.password-error {
+  min-height: 24px;
+  color: #f0b5c9;
+  font-size: 11px !important;
+  margin: 7px 0 0;
+}
+.password-hint {
+  font-size: 10px !important;
+  letter-spacing: 1px;
+  color: #bda4b4;
+}
+
 /* Flower-bloom transition */
 .bloom-transition {
   position: fixed;
@@ -567,6 +641,110 @@ p {
   }
 }
 
+
+/* Final message turns into petals and rises into a blue sky */
+.sky-finale {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: 24px;
+  background: linear-gradient(180deg, #70c7f4 0%, #a7e1ff 48%, #e6f8ff 100%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.sky-finale.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.sky-finale::before,
+.sky-finale::after {
+  content: "";
+  position: absolute;
+  width: 210px;
+  height: 70px;
+  border-radius: 100px;
+  background: #ffffff85;
+  filter: blur(3px);
+  box-shadow: 38px 12px 0 7px #ffffff70, 78px -4px 0 -2px #ffffff60;
+  animation: cloudDrift 18s linear infinite alternate;
+}
+.sky-finale::before { top: 16%; left: -65px; }
+.sky-finale::after { right: -80px; bottom: 17%; transform: scale(.75); animation-delay: -7s; }
+.sky-message {
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
+  color: #285477;
+  text-align: center;
+  font: clamp(25px, 6vw, 46px)/1.55 "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+}
+.sky-message .letter-char {
+  display: inline-block;
+  white-space: pre;
+  transform-origin: center;
+}
+.sky-message .letter-char.fly {
+  animation: characterPetalFlight 2.7s cubic-bezier(.18,.65,.25,1) forwards;
+  animation-delay: var(--delay, 0ms);
+}
+.sky-petal {
+  position: absolute;
+  z-index: 1;
+  bottom: -35px;
+  left: var(--left, 50%);
+  width: var(--size, 13px);
+  height: calc(var(--size, 13px) * 1.65);
+  border-radius: 70% 20% 70% 20%;
+  background: linear-gradient(145deg, #fff1f4, #ed9fbd 65%, #c96991);
+  box-shadow: 0 2px 8px #3c86b52b;
+  animation: skyPetalRise var(--duration, 5s) ease-out forwards;
+  animation-delay: var(--delay, 0ms);
+  transform: rotate(var(--rotation, 0deg));
+  pointer-events: none;
+}
+.sky-finale .sky-signoff {
+  position: absolute;
+  bottom: max(22px, env(safe-area-inset-bottom));
+  left: 16px;
+  right: 16px;
+  z-index: 2;
+  color: #3d7292;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-align: center;
+  opacity: 0;
+  animation: skySignoff 1s ease 3.4s forwards;
+}
+@keyframes characterPetalFlight {
+  0% { opacity: 1; transform: translateY(0) rotate(0deg) scale(1); filter: blur(0); }
+  35% { opacity: 1; transform: translateY(-24px) rotate(12deg) scale(1.08); }
+  100% { opacity: 0; transform: translate3d(var(--drift, 0px), -75vh, 0) rotate(var(--spin, 300deg)) scale(.25); filter: blur(2px); }
+}
+@keyframes skyPetalRise {
+  0% { opacity: 0; transform: translate3d(0, 0, 0) rotate(var(--rotation, 0deg)) scale(.5); }
+  12% { opacity: .95; }
+  100% { opacity: 0; transform: translate3d(var(--drift, 60px), -115vh, 0) rotate(650deg) scale(.8); }
+}
+@keyframes cloudDrift {
+  from { translate: -10px 0; }
+  to { translate: 50px 0; }
+}
+@keyframes skySignoff {
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sky-finale *, .sky-finale::before, .sky-finale::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
 /* Ending petals */
 .petals {
   position: fixed;
@@ -630,6 +808,27 @@ p {
 
 
 <body>
+<div class="password-screen" id="passwordScreen">
+  <div class="password-card">
+    <div class="lock-flower">🌷</div>
+    <div class="eyebrow">Một món quà nhỏ dành riêng cho cậu</div>
+    <h2>Chỉ dành cho <span class="accent">Huyên</span></h2>
+    <div class="rule"></div>
+    <p>Nhập ngày đặc biệt của cậu để mở món quà nhé ♡</p>
+    <form id="passwordForm">
+      <input class="password-input" id="passwordInput" type="text"
+             inputmode="text" autocomplete="off" autocapitalize="off" spellcheck="false"
+             placeholder="23/07" aria-label="Mật khẩu ngày sinh" maxlength="10" required>
+      <button class="primary" type="submit">Mở món quà ♡</button>
+    </form>
+    <p class="password-error" id="passwordError" aria-live="polite"></p>
+    <p class="password-hint">Một ngày thật đặc biệt 🌸</p>
+  </div>
+</div>
+<div class="sky-finale" id="skyFinale" aria-hidden="true">
+  <div class="sky-message" id="skyMessage">Chúc Huyên luôn hạnh phúc ♡</div>
+  <div class="sky-signoff">MONG NHỮNG ĐIỀU DỊU DÀNG SẼ ĐẾN VỚI CẬU</div>
+</div>
 <div class="bloom-transition" id="bloomTransition" aria-hidden="true">
   <div class="bloom-scene">
     <div class="bloom-flower" aria-hidden="true">
@@ -933,13 +1132,51 @@ p {
     <p class="tiny">20 · 10 · Một lời chúc chân thành dành cho Huyên</p>
 
     <div class="actions">
-      <button class="secondary" id="replayButton">Đọc lại món quà ↺</button>
+      <button class="primary" id="replayButton">Kết thúc món quà ♡</button>
     </div>
   </div>
 </section>
 
 </main>
 
+<script>
+// Mở khóa bằng ngày sinh; chấp nhận 23/07, 2307, 23-07 hoặc 23.07.
+(() => {
+  const form = document.getElementById("passwordForm");
+  const input = document.getElementById("passwordInput");
+  const screen = document.getElementById("passwordScreen");
+  const error = document.getElementById("passwordError");
+  if (!form || !input || !screen || !error) return;
+
+  let unlocked = false;
+  function unlock(event) {
+    if (event) event.preventDefault();
+    if (unlocked) return;
+    const normalized = (input.value || "").trim().replace(/\s/g, "").replace(/[^0-9]/g, "");
+    if (normalized === "2307") {
+      unlocked = true;
+      document.body.classList.add("gift-unlocked");
+      error.textContent = "";
+      screen.classList.add("hidden");
+      screen.style.opacity = "0";
+      screen.style.visibility = "hidden";
+      screen.style.pointerEvents = "none";
+      window.setTimeout(() => { screen.style.display = "none"; }, 560);
+    } else {
+      error.textContent = "Mật khẩu chưa đúng rồi, thử nhập 23/07 nhé ♡";
+      input.value = "";
+      input.focus();
+    }
+  }
+  form.addEventListener("submit", unlock);
+  const button = form.querySelector('button[type="submit"]');
+  if (button) button.addEventListener("click", (event) => {
+    // Xử lý trực tiếp khi chạm nút, kể cả trên trình duyệt điện thoại.
+    event.preventDefault();
+    unlock(event);
+  });
+})();
+</script>
 <script>
 (() => {
   const screens = [...document.querySelectorAll(".screen")];
@@ -950,6 +1187,12 @@ p {
   const envelope = document.getElementById("envelope");
   const petals = document.getElementById("petals");
   const bloomTransition = document.getElementById("bloomTransition");
+  const passwordScreen = document.getElementById("passwordScreen");
+  const passwordForm = document.getElementById("passwordForm");
+  const passwordInput = document.getElementById("passwordInput");
+  const passwordError = document.getElementById("passwordError");
+  const skyFinale = document.getElementById("skyFinale");
+  const skyMessage = document.getElementById("skyMessage");
 
   let currentScreen = 0;
   let petalsTimer = null;
@@ -1005,6 +1248,50 @@ p {
       musicButton.textContent = "♪";
       musicCaption.textContent = "Nhạc đang tạm dừng";
     }
+  }
+
+
+  // Kiểm tra mật khẩu được xử lý bởi trình xử lý độc lập phía trên.
+
+  function launchSkyFinale() {
+    const sourceText = "Chúc Huyên luôn hạnh phúc ♡";
+    skyMessage.replaceChildren();
+    // Segment by visible characters (graphemes), so Vietnamese accents stay attached
+    // to their base letters instead of flying as separate marks.
+    const characters = typeof Intl.Segmenter === "function"
+      ? [...new Intl.Segmenter("vi", { granularity: "grapheme" }).segment(sourceText)].map(item => item.segment)
+      : Array.from(sourceText.normalize("NFC"));
+    characters.forEach((character, index) => {
+      const span = document.createElement("span");
+      span.className = "letter-char";
+      span.textContent = character === " " ? "\u00a0" : character;
+      span.style.setProperty("--delay", (index * 34) + "ms");
+      span.style.setProperty("--drift", (Math.random() * 150 - 75) + "px");
+      span.style.setProperty("--spin", (Math.random() * 500 - 250) + "deg");
+      skyMessage.appendChild(span);
+    });
+
+    skyFinale.classList.add("active");
+    skyFinale.setAttribute("aria-hidden", "false");
+    const chars = [...skyMessage.querySelectorAll(".letter-char")];
+    // Let the message rest briefly against the blue sky, then each character drifts away like a petal.
+    window.setTimeout(() => {
+      chars.forEach((character) => character.classList.add("fly"));
+      for (let i = 0; i < 42; i++) {
+        window.setTimeout(() => {
+          const petal = document.createElement("span");
+          petal.className = "sky-petal";
+          petal.style.setProperty("--left", (Math.random() * 100) + "%");
+          petal.style.setProperty("--size", (8 + Math.random() * 12) + "px");
+          petal.style.setProperty("--duration", (4 + Math.random() * 3) + "s");
+          petal.style.setProperty("--delay", (Math.random() * 450) + "ms");
+          petal.style.setProperty("--drift", (Math.random() * 180 - 90) + "px");
+          petal.style.setProperty("--rotation", (Math.random() * 360) + "deg");
+          skyFinale.appendChild(petal);
+          window.setTimeout(() => petal.remove(), 8000);
+        }, i * 85);
+      }
+    }, 950);
   }
 
   const startButton = document.getElementById("startButton");
@@ -1115,18 +1402,22 @@ p {
   });
 
   document.getElementById("replayButton").addEventListener("click", () => {
+    launchSkyFinale();
+  });
+
+  // Tap the sky after the petals have floated away to replay the gift.
+  skyFinale.addEventListener("click", () => {
+    skyFinale.classList.remove("active");
+    skyFinale.setAttribute("aria-hidden", "true");
+    skyFinale.querySelectorAll(".sky-petal").forEach(petal => petal.remove());
+    skyMessage.replaceChildren();
     stopPetals();
     bloomTransition.classList.remove("active", "leaving");
     bloomTransition.setAttribute("aria-hidden", "true");
     envelope.classList.remove("opened");
-
     document.getElementById("openLetterButton").textContent = "Mở thư của cậu";
     document.getElementById("flowerMessage").textContent = "Chạm vào một bông hoa nhé ♡";
-
-    document.querySelectorAll(".flower-card").forEach(item => {
-      item.setAttribute("aria-pressed", "false");
-    });
-
+    document.querySelectorAll(".flower-card").forEach(item => item.setAttribute("aria-pressed", "false"));
     showScreen(0);
   });
 })();
