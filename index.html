@@ -2,760 +2,936 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <meta name="theme-color" content="#180d18">
-  <title>Một món quà dành cho Huyên 🌷</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#190d19">
+<meta name="description" content="Một món quà nhỏ, một lời chúc chân thành dành riêng cho Huyên.">
+<title>For Huyên ♡ | 20.10</title>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg: #180d18;
-      --wine: #57283f;
-      --pink: #e8b9c9;
-      --cream: #fff5ed;
-      --gold: #e6c58b;
-      --muted: #c9b4c0;
-    }
+<style>
+:root {
+  --bg: #190d19;
+  --bg2: #2a1426;
+  --pink: #e7b5c7;
+  --rose: #bd7895;
+  --gold: #e4c795;
+  --cream: #fff5ec;
+  --muted: #d0bbc8;
+}
 
-    * { box-sizing: border-box; }
+* { box-sizing: border-box; }
 
-    html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; }
 
-    body {
-      margin: 0;
-      min-height: 100vh;
-      color: var(--cream);
-      background:
-        radial-gradient(ellipse at 50% 0%, #51253c 0%, transparent 55%),
-        linear-gradient(160deg, #180d18, #24111f 60%, #120b15);
-      font-family: "Be Vietnam Pro", sans-serif;
-      overflow-x: hidden;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--cream);
+  background:
+    radial-gradient(ellipse at 50% 0%, #603047 0%, transparent 55%),
+    linear-gradient(155deg, #190d19, #291427 65%, #120a14);
+  font-family: "Be Vietnam Pro", sans-serif;
+  overflow-x: hidden;
+}
 
-    button { font: inherit; }
+button { font: inherit; }
 
-    button:focus-visible {
-      outline: 2px solid var(--gold);
-      outline-offset: 5px;
-    }
+button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
 
-    .screen {
-      display: none;
-      min-height: 100svh;
-      width: 100%;
-      padding: 32px 20px calc(38px + env(safe-area-inset-bottom));
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      isolation: isolate;
-    }
+.screen {
+  display: none;
+  min-height: 100svh;
+  padding: 65px 20px 75px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  isolation: isolate;
+}
 
-    .screen.active {
-      display: flex;
-      animation: screenIn 1s ease both;
-    }
+.screen.active {
+  display: flex;
+  animation: appear 1s ease both;
+}
 
-    .content {
-      width: min(100%, 660px);
-      margin: auto;
-      position: relative;
-      z-index: 2;
-    }
+.content {
+  width: min(100%, 680px);
+  margin: auto;
+  position: relative;
+  z-index: 2;
+}
 
-    .eyebrow {
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 4px;
-      font-size: 10px;
-      line-height: 1.9;
-    }
+.eyebrow {
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 4px;
+  line-height: 2;
+  text-transform: uppercase;
+}
 
-    h1, h2, .serif {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-weight: 400;
-    }
+h1, h2, h3, .serif {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 400;
+}
 
-    h1 {
-      font-size: clamp(48px, 11vw, 83px);
-      line-height: .98;
-      margin: 25px 0;
-      color: var(--cream);
-    }
+h1 {
+  font-size: clamp(54px, 12vw, 88px);
+  line-height: .98;
+  margin: 24px 0;
+}
 
-    h2 {
-      font-size: clamp(36px, 8vw, 56px);
-      line-height: 1.08;
-      margin: 14px 0 22px;
-    }
+h2 {
+  font-size: clamp(38px, 9vw, 61px);
+  line-height: 1.05;
+  margin: 15px 0 24px;
+}
 
-    p {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 2;
-      font-weight: 300;
-    }
+h3 {
+  font-size: 31px;
+  margin: 0 0 22px;
+}
 
-    .accent { color: var(--pink); font-style: italic; }
+p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 2;
+  font-weight: 300;
+}
 
-    .rule {
-      width: 56px;
-      height: 1px;
-      background: var(--gold);
-      margin: 25px auto;
-      opacity: .8;
-    }
+.accent {
+  color: var(--pink);
+  font-style: italic;
+}
 
-    .primary, .secondary {
-      border: 1px solid rgba(230,197,139,.65);
-      border-radius: 999px;
-      padding: 14px 25px;
-      cursor: pointer;
-      transition: transform .25s, background .25s;
-      min-height: 48px;
-      -webkit-tap-highlight-color: transparent;
-    }
+.rule {
+  width: 52px;
+  height: 1px;
+  margin: 25px auto;
+  background: var(--gold);
+}
 
-    .primary {
-      color: #24121f;
-      background: linear-gradient(135deg, #f4d8c7, #dfafc3);
-      font-weight: 600;
-      box-shadow: 0 8px 35px #0003;
-    }
+.primary, .secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 13px 24px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: transform .25s, background .25s;
+  -webkit-tap-highlight-color: transparent;
+}
 
-    .secondary {
-      background: #ffffff08;
-      color: var(--cream);
-    }
+.primary {
+  border: 1px solid #f1d4d2;
+  color: #281422;
+  background: linear-gradient(130deg, #f4ddcf, #dfadc2);
+  box-shadow: 0 8px 32px #0003;
+  font-size: 13px;
+  font-weight: 600;
+}
 
-    .primary:hover, .secondary:hover { transform: translateY(-2px); }
+.secondary {
+  color: var(--cream);
+  border: 1px solid #e7b5c755;
+  background: #ffffff08;
+  font-size: 13px;
+}
 
-    .primary:active, .secondary:active { transform: scale(.98); }
+.primary:hover, .secondary:hover {
+  transform: translateY(-2px);
+}
 
-    .tiny {
-      font-size: 11px;
-      letter-spacing: 1px;
-      margin-top: 18px;
-      color: #b9a1b0;
-    }
+.tiny {
+  color: #bda4b4;
+  font-size: 10px;
+  letter-spacing: 1px;
+  line-height: 1.9;
+  margin-top: 18px;
+}
 
-    .intro-flower {
-      font-size: 54px;
-      display: inline-block;
-      animation: float 4s ease-in-out infinite;
-      filter: drop-shadow(0 0 18px #e9b2c533);
-    }
+.signature {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  color: var(--pink);
+  font-size: 29px;
+  font-style: italic;
+}
 
-    .signature {
-      color: var(--pink);
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 28px;
-      font-style: italic;
-    }
+.flower-icon {
+  display: inline-block;
+  font-size: 52px;
+  animation: float 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 20px #f5b7d133);
+}
 
-    /* Phong thư */
-    .envelope-wrap {
-      width: min(330px, 85vw);
-      margin: 30px auto 25px;
-      cursor: pointer;
-      perspective: 900px;
-      -webkit-tap-highlight-color: transparent;
-    }
+/* Music */
+.music-button {
+  position: fixed;
+  top: calc(14px + env(safe-area-inset-top));
+  right: 15px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid #e7b5c755;
+  border-radius: 50%;
+  color: var(--cream);
+  background: #241321e8;
+  backdrop-filter: blur(12px);
+  cursor: pointer;
+  z-index: 20;
+}
 
-    .envelope {
-      height: 205px;
-      position: relative;
-      border-radius: 5px;
-      background: #b9798e;
-      box-shadow: 0 25px 60px #0005;
-      overflow: hidden;
-    }
+.music-button.playing {
+  animation: musicGlow 2s ease-in-out infinite;
+}
 
-    .envelope::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(145deg, #d9a7b7, #99516d);
-      clip-path: polygon(0 0, 100% 0, 50% 65%);
-      z-index: 3;
-      transform-origin: top;
-      transition: transform .8s ease;
-    }
+.music-caption {
+  position: fixed;
+  top: calc(63px + env(safe-area-inset-top));
+  right: 14px;
+  z-index: 20;
+  font-size: 9px;
+  color: #cdb4c2;
+  max-width: 130px;
+  text-align: right;
+}
 
-    .envelope::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(35deg, #7f405b, #c88aa0);
-      clip-path: polygon(0 100%, 0 0, 50% 58%, 100% 0, 100% 100%);
-      z-index: 2;
-    }
+/* Progress */
+.progress {
+  position: fixed;
+  bottom: calc(15px + env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 7px;
+  z-index: 20;
+}
 
-    .letter-preview {
-      position: absolute;
-      left: 8%;
-      width: 84%;
-      height: 80%;
-      top: 10%;
-      background: #fff4e9;
-      color: #73425b;
-      display: grid;
-      place-items: center;
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 25px;
-      transition: transform .8s ease;
-      z-index: 1;
-    }
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 10px;
+  background: #d9c1cf44;
+  transition: all .3s;
+}
 
-    .seal {
-      position: absolute;
-      width: 43px;
-      height: 43px;
-      left: calc(50% - 21px);
-      top: 51%;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: #f4d8c7;
-      color: #793d59;
-      font-size: 21px;
-      z-index: 4;
-      box-shadow: 0 2px 12px #0002;
-    }
+.dot.active {
+  width: 19px;
+  background: var(--gold);
+}
 
-    .envelope-wrap.opened .envelope::before {
-      transform: rotateX(180deg);
-    }
+/* Envelope */
+.envelope-wrap {
+  width: min(330px, 85vw);
+  margin: 32px auto 25px;
+  cursor: pointer;
+}
 
-    .envelope-wrap.opened .letter-preview {
-      transform: translateY(-60%);
-    }
+.envelope {
+  height: 205px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  background: linear-gradient(145deg, #d5a1b3, #96516d);
+  box-shadow: 0 25px 60px #0005;
+}
 
-    /* Lá thư */
-    .letter-card {
-      text-align: left;
-      padding: clamp(22px, 6vw, 44px);
-      background:
-        linear-gradient(#fff8efee, #fff8efee),
-        repeating-linear-gradient(0deg, #decbb9 0, #decbb9 1px, transparent 1px, transparent 32px);
-      color: #513446;
-      border: 1px solid #e7cdb8;
-      border-radius: 3px;
-      box-shadow: 0 20px 70px #0004;
-      position: relative;
-    }
+.envelope::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, #e0b0bf, #a85e7c);
+  clip-path: polygon(0 0, 100% 0, 50% 65%);
+  transform-origin: top;
+  transition: transform .8s ease;
+  z-index: 3;
+}
 
-    .letter-card::before {
-      content: "♡";
-      position: absolute;
-      top: 14px;
-      right: 20px;
-      color: #b97b91;
-      font-size: 22px;
-    }
+.envelope::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(35deg, #783952, #c7869d);
+  clip-path: polygon(0 100%, 0 0, 50% 58%, 100% 0, 100% 100%);
+  z-index: 2;
+}
 
-    .letter-card p {
-      color: #674b5a;
-      font-size: 14px;
-      line-height: 2.05;
-      margin: 0 0 17px;
-      white-space: pre-line;
-    }
+.letter-preview {
+  position: absolute;
+  top: 10%;
+  left: 8%;
+  width: 84%;
+  height: 80%;
+  display: grid;
+  place-items: center;
+  color: #70445a;
+  background: #fff4e9;
+  font: 26px "Cormorant Garamond", Georgia, serif;
+  transition: transform .8s;
+}
 
-    .letter-card .salutation {
-      font-family: "Cormorant Garamond", Georgia, serif;
-      color: #824b65;
-      font-size: 30px;
-      margin-bottom: 24px;
-    }
+.seal {
+  position: absolute;
+  top: 51%;
+  left: calc(50% - 21px);
+  z-index: 4;
+  width: 43px;
+  height: 43px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  color: #793d59;
+  background: #f5ddcb;
+  font-size: 21px;
+}
 
-    .letter-line {
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity .75s ease, transform .75s ease;
-    }
+.envelope-wrap.opened .envelope::before {
+  transform: rotateX(180deg);
+}
 
-    .letter-line.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+.envelope-wrap.opened .letter-preview {
+  transform: translateY(-60%);
+}
 
-    /* Vườn hoa */
-    .garden {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      margin: 30px auto;
-    }
+/* Paper letter */
+.paper {
+  padding: clamp(23px, 6vw, 45px);
+  color: #624356;
+  text-align: left;
+  background:
+    linear-gradient(#fff8efef, #fff8efef),
+    repeating-linear-gradient(0deg, #decbb9 0, #decbb9 1px, transparent 1px, transparent 32px);
+  border: 1px solid #e8d0bf;
+  border-radius: 3px;
+  box-shadow: 0 20px 70px #0004;
+  position: relative;
+}
 
-    .flower {
-      min-width: 0;
-      aspect-ratio: 1 / 1.08;
-      padding: 10px 4px;
-      border: 1px solid #e8b9c933;
-      border-radius: 70px 70px 18px 18px;
-      color: var(--cream);
-      background: linear-gradient(180deg, #ffffff0d, #dca6bd0a);
-      cursor: pointer;
-      transition: transform .3s, border-color .3s, background .3s;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-    }
+.paper::after {
+  content: "♡";
+  position: absolute;
+  right: 19px;
+  top: 12px;
+  color: #bb8095;
+  font-size: 22px;
+}
 
-    .flower:hover, .flower:focus-visible {
-      transform: translateY(-5px);
-      border-color: var(--gold);
-      background: #e8b9c91a;
-    }
+.paper p {
+  color: #674b5a;
+  font-size: 14px;
+  line-height: 2.05;
+  margin: 0 0 20px;
+  white-space: pre-line;
+}
 
-    .flower .bloom {
-      font-size: clamp(26px, 7vw, 40px);
-      filter: drop-shadow(0 0 12px #e9a4c222);
-    }
+.paper .paper-heading {
+  color: #89516b;
+  font: 31px "Cormorant Garamond", Georgia, serif;
+}
 
-    .flower .flower-label {
-      font-size: 10px;
-      letter-spacing: .5px;
-      line-height: 1.5;
-    }
+.paper .signature { color: #89516b; }
 
-    .flower-message {
-      min-height: 76px;
-      margin: 20px auto 0;
-      padding: 16px;
-      border: 1px solid #e8b9c922;
-      border-radius: 12px;
-      color: var(--pink);
-      font-family: "Cormorant Garamond", Georgia, serif;
-      font-size: 23px;
-      line-height: 1.5;
-      display: grid;
-      place-items: center;
-    }
+.letter-line {
+  opacity: 0;
+  transform: translateY(9px);
+  transition: opacity .8s ease, transform .8s ease;
+}
 
-    /* Đoạn kết và cánh hoa */
-    .petals {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-      z-index: 5;
-    }
+.letter-line.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
-    .petal {
-      position: absolute;
-      top: -30px;
-      animation: fall linear forwards;
-      opacity: .75;
-      will-change: transform;
-    }
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 27px;
+}
 
-    .ending-rose {
-      font-size: 68px;
-      margin: 14px;
-      display: inline-block;
-      filter: drop-shadow(0 0 22px #f3b4c533);
-      animation: float 4s ease-in-out infinite;
-    }
+/* Garden */
+.garden {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 30px auto;
+}
 
-    .music-control {
-      position: fixed;
-      z-index: 10;
-      right: 15px;
-      top: calc(14px + env(safe-area-inset-top));
-      width: 44px;
-      height: 44px;
-      border: 1px solid #e8b9c955;
-      border-radius: 50%;
-      color: var(--cream);
-      background: #24111fdd;
-      cursor: pointer;
-      backdrop-filter: blur(12px);
-    }
+.flower-card {
+  min-width: 0;
+  aspect-ratio: 1 / 1.08;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 4px;
+  border: 1px solid #e7b5c72b;
+  border-radius: 70px 70px 18px 18px;
+  color: var(--cream);
+  background: linear-gradient(180deg, #ffffff0d, #dca6bd0a);
+  cursor: pointer;
+  transition: transform .3s, border-color .3s, background .3s;
+}
 
-    .progress {
-      position: fixed;
-      z-index: 10;
-      bottom: calc(15px + env(safe-area-inset-bottom));
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 7px;
-    }
+.flower-card:hover, .flower-card[aria-pressed="true"] {
+  transform: translateY(-5px);
+  border-color: var(--gold);
+  background: #e8b9c91a;
+}
 
-    .dot {
-      width: 5px;
-      height: 5px;
-      background: #c9b4c044;
-      border-radius: 50%;
-      transition: all .3s;
-    }
+.flower-card .bloom {
+  font-size: clamp(27px, 7vw, 43px);
+  filter: drop-shadow(0 0 12px #e9a4c222);
+}
 
-    .dot.active {
-      width: 19px;
-      border-radius: 9px;
-      background: var(--gold);
-    }
+.flower-label {
+  font-size: 10px;
+  line-height: 1.5;
+}
 
-    .fade-in { animation: screenIn 1.2s ease both; }
+.flower-message {
+  min-height: 90px;
+  padding: 15px;
+  border: 1px solid #e7b5c722;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  color: var(--pink);
+  font: 24px/1.5 "Cormorant Garamond", Georgia, serif;
+}
 
-    @keyframes screenIn {
-      from { opacity: 0; transform: translateY(12px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+/* Ending petals */
+.petals {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-9px); }
-    }
+.petal {
+  position: absolute;
+  top: -30px;
+  animation: fall linear forwards;
+  opacity: .75;
+}
 
-    @keyframes fall {
-      to { transform: translate3d(var(--drift), 110svh, 0) rotate(650deg); }
-    }
+.ending-rose {
+  font-size: 67px;
+  display: inline-block;
+  margin: 15px;
+  filter: drop-shadow(0 0 22px #f3b4c533);
+  animation: float 4s ease-in-out infinite;
+}
 
-    @media (max-width: 380px) {
-      .screen { padding-left: 15px; padding-right: 15px; }
-      .garden { gap: 7px; }
-      .flower .flower-label { font-size: 9px; }
-      .letter-card p { font-size: 13px; }
-    }
+@keyframes appear {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        scroll-behavior: auto !important;
-        transition-duration: .01ms !important;
-      }
-    }
-  </style>
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+@keyframes musicGlow {
+  0%, 100% { box-shadow: 0 0 0 #e7b5c700; }
+  50% { box-shadow: 0 0 18px #e7b5c744; }
+}
+
+@keyframes fall {
+  to { transform: translate3d(var(--drift), 110svh, 0) rotate(650deg); }
+}
+
+@media (max-width: 380px) {
+  .screen { padding-left: 15px; padding-right: 15px; }
+  .garden { gap: 7px; }
+  .flower-label { font-size: 9px; }
+  .paper p { font-size: 13px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+</style>
 </head>
 
 <body>
-  <audio id="bgMusic" loop preload="none">
-    <source src="doi-52hz.mp3" type="audio/mpeg">
-  </audio>
 
-  <button class="music-control" id="musicButton"
-          aria-label="Bật hoặc tắt nhạc" title="Bật/tắt nhạc">♫</button>
+<!-- Upload file audio được phép sử dụng với tên doi-52hz.mp3 -->
+<audio id="bgMusic" loop preload="none">
+  <source src="doi-52hz.mp3" type="audio/mpeg">
+</audio>
 
-  <div class="progress" id="progress" aria-label="Tiến trình món quà">
-    <span class="dot active"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
-    <span class="dot"></span>
+<button class="music-button" id="musicButton"
+        aria-label="Bật hoặc tắt nhạc" title="Bật/tắt nhạc">♫</button>
+<div class="music-caption" id="musicCaption">Một giai điệu dành cho cậu</div>
+
+<div class="progress" id="progress" aria-label="Tiến trình món quà">
+  <span class="dot active"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
+</div>
+
+<main>
+
+<!-- 1. INTRO -->
+<section class="screen active" id="screen0">
+  <div class="content">
+    <div class="flower-icon">🌷</div>
+    <div class="eyebrow">20 tháng 10 · Một món quà nhỏ</div>
+    <h1>Gửi <span class="accent">Huyên</span></h1>
+    <div class="rule"></div>
+    <p>
+      Có những điều đôi khi khó nói thành lời.<br>
+      Vậy nên, tớ đã dành một chút thời gian<br>
+      để tạo nên món quà nhỏ này.
+    </p>
+    <p class="signature">— Lê Hoàng Vũ —</p>
+    <button class="primary" id="startButton">Bắt đầu món quà ♡</button>
+    <div class="tiny">Một món quà nhỏ, được chuẩn bị dành riêng cho Huyên</div>
   </div>
+</section>
 
-  <main>
-    <!-- Màn 1: Giới thiệu -->
-    <section class="screen active" id="screen0">
-      <div class="content">
-        <div class="intro-flower">🌷</div>
-        <div class="eyebrow">Một món quà nhỏ · 20 tháng 10</div>
-        <h1>Gửi <span class="accent">Huyên</span></h1>
-        <div class="rule"></div>
-        <p>
-          Có những điều đôi khi khó nói thành lời.<br>
-          Vậy nên, tớ đã dành một chút thời gian<br>
-          để tạo nên món quà nhỏ này.
-        </p>
-        <p class="signature">— Lê Hoàng Vũ —</p>
-        <button class="primary" id="startButton">Bắt đầu món quà ♡</button>
-        <div class="tiny">Dành riêng cho Huyên · Hãy mở khi cậu sẵn sàng</div>
+<!-- 2. ENVELOPE -->
+<section class="screen" id="screen1">
+  <div class="content">
+    <div class="eyebrow">Một điều nhỏ tớ muốn gửi cậu</div>
+    <h2>Một bức thư<br><span class="accent">dành cho cậu</span></h2>
+    <p>Không cần vội đâu. Cứ từ từ mở nhé.</p>
+
+    <div class="envelope-wrap" id="envelope" role="button"
+         tabindex="0" aria-label="Chạm để mở phong thư">
+      <div class="envelope">
+        <div class="letter-preview">Dành cho Huyên ♡</div>
+        <div class="seal">♡</div>
       </div>
-    </section>
+    </div>
 
-    <!-- Màn 2: Phong thư -->
-    <section class="screen" id="screen1">
-      <div class="content">
-        <div class="eyebrow">Một điều nhỏ tớ muốn gửi cậu</div>
-        <h2>Gửi cậu một <span class="accent">bức thư</span></h2>
-        <p>Không cần vội đâu. Cứ từ từ mở nhé.</p>
+    <button class="primary" id="openLetterButton">Mở thư của cậu</button>
+    <p class="tiny">Một vài lời chúc mà tớ muốn gửi đến cậu</p>
+  </div>
+</section>
 
-        <div class="envelope-wrap" id="envelope" role="button"
-             tabindex="0" aria-label="Mở phong thư">
-          <div class="envelope">
-            <div class="letter-preview">Dành cho Huyên ♡</div>
-            <div class="seal">♡</div>
-          </div>
-        </div>
+<!-- 3. LONG WISH -->
+<section class="screen" id="screen2">
+  <div class="content">
+    <div class="eyebrow">Gửi những điều tốt đẹp nhất</div>
+    <h2>Chúc cậu một ngày<br><span class="accent">thật đẹp</span></h2>
 
-        <button class="primary" id="openLetterButton">Mở thư của cậu</button>
-        <p class="tiny">Chạm vào phong thư để mở</p>
-      </div>
-    </section>
+    <article class="paper">
+      <p class="paper-heading letter-line">Huyên à, 🌷</p>
 
-    <!-- Màn 3: Lá thư -->
-    <section class="screen" id="screen2">
-      <div class="content">
-        <div class="eyebrow">Một vài lời chân thành</div>
-        <h2>Huyên à,</h2>
+      <p class="letter-line">
+        Nhân ngày 20/10, tớ chúc cậu sẽ luôn có thật nhiều niềm vui,
+        luôn giữ được nụ cười mà cậu vốn có và tìm thấy những điều
+        khiến bản thân cảm thấy hạnh phúc. Mong rằng những ngày tháng
+        sắp tới sẽ đối xử với cậu thật dịu dàng, để dù đôi khi cuộc sống
+        có mệt mỏi hay không được như mong đợi, cậu vẫn luôn có đủ niềm tin
+        để bước tiếp.
+      </p>
 
-        <article class="letter-card">
-          <p class="salutation letter-line">Gửi Huyên,</p>
+      <p class="letter-line">
+        Tớ chúc cậu học tập thật tốt, đạt được những mục tiêu mà cậu đã
+        đặt ra và từng bước đến gần hơn với ước mơ của mình. Mong rằng
+        những nỗ lực thầm lặng của cậu sẽ được đền đáp xứng đáng, những
+        điều cậu từng lo lắng rồi sẽ có cách giải quyết, và những ngày
+        cậu cảm thấy bản thân chưa đủ tốt sẽ sớm được thay thế bằng
+        những ngày cậu nhận ra mình đã tiến bộ nhiều đến nhường nào.
+      </p>
 
-          <p class="letter-line">
-            Nhân ngày 20/10, tớ muốn chúc cậu luôn vui vẻ,
-            bình an và gặp thật nhiều điều tốt đẹp.
-            Mong rằng những ngày đến trường của cậu sẽ có
-            nhiều niềm vui, nhiều tiếng cười và những kỷ niệm đáng nhớ.
-          </p>
+      <p class="letter-line">
+        Tớ cũng mong cậu sẽ gặp được những người thật lòng quan tâm đến cậu,
+        những người sẵn sàng lắng nghe khi cậu muốn chia sẻ, ở bên khi cậu
+        cần một người đồng hành và tôn trọng cậu ngay cả khi hai người
+        không cùng suy nghĩ. Mong cậu luôn được yêu thương bằng sự chân thành,
+        được đối xử bằng lòng tử tế và không bao giờ phải đánh mất con người
+        thật của mình chỉ để trở nên đặc biệt trong mắt bất kỳ ai.
+      </p>
 
-          <p class="letter-line">
-            Tớ làm trang web này không phải vì có điều gì quá lớn lao.
-            Chỉ là tớ muốn tự tay chuẩn bị một món quà khác một chút,
-            để gửi đến cậu những lời mà bình thường tớ không biết
-            phải bắt đầu từ đâu.
-          </p>
+      <p class="letter-line">
+        Nếu có những ngày cậu cảm thấy mệt mỏi, tớ mong cậu sẽ nhớ rằng
+        mình không cần phải lúc nào cũng mạnh mẽ hay hoàn hảo. Cậu có thể
+        nghỉ ngơi, có thể buồn một chút, có thể đi chậm hơn người khác.
+        Chỉ cần cậu vẫn đang cố gắng theo cách của riêng mình, như vậy
+        đã đáng quý rồi. Đừng quá khắt khe với bản thân, cũng đừng vì
+        một vài chuyện không như ý mà quên mất rằng phía trước vẫn còn
+        rất nhiều điều tốt đẹp đang chờ cậu khám phá.
+      </p>
 
-          <p class="letter-line">
-            Tớ biết cậu xem tớ là một người bạn.
-            Tớ tôn trọng điều đó, và cậu không cần phải thay đổi
-            cảm xúc chỉ vì những gì tớ viết ở đây.
-          </p>
+      <p class="letter-line">
+        Và tớ mong những năm tháng học trò của cậu sẽ trở thành những
+        kỷ niệm thật đẹp — có những người bạn đáng quý, những lần cười
+        thật thoải mái, những thành công khiến cậu tự hào và cả những
+        trải nghiệm giúp cậu trưởng thành hơn. Sau này, khi nhìn lại
+        quãng thời gian này, mong cậu có thể mỉm cười và cảm thấy rằng
+        mình đã sống một tuổi trẻ thật đáng nhớ.
+      </p>
 
-          <p class="letter-line">
-            Còn về phía tớ, tớ vẫn muốn cố gắng hoàn thiện bản thân,
-            trưởng thành hơn và học cách thể hiện tình cảm một cách
-            chân thành, đúng mực. Nếu một ngày nào đó cậu sẵn lòng
-            cho tớ cơ hội để hai đứa hiểu nhau hơn, tớ sẽ rất trân trọng.
-            Nhưng tớ không muốn cậu phải chờ đợi hay cảm thấy có áp lực
-            vì lời nhắn này.
-          </p>
+      <p class="letter-line">
+        Cuối cùng, tớ chúc cậu không chỉ hạnh phúc trong ngày 20/10,
+        mà còn hạnh phúc trong những ngày chẳng có dịp gì đặc biệt.
+        Mong cậu có thể tìm thấy niềm vui trong những điều nhỏ bé,
+        bình yên trong những lúc cần nghỉ ngơi và đủ can đảm để theo đuổi
+        những điều mà trái tim cậu thật sự mong muốn.
+      </p>
 
-          <p class="letter-line">
-            Dù sau này mọi chuyện thế nào, tớ vẫn mong cậu luôn hạnh phúc,
-            được làm những điều mình thích và giữ nụ cười của riêng mình.
-            Cậu xứng đáng với những điều tử tế.
-          </p>
+      <p class="letter-line">
+        Mong mọi điều tốt đẹp sẽ đến với cậu, không phải vì hôm nay
+        là một ngày đặc biệt, mà đơn giản vì cậu xứng đáng được đón nhận
+        những điều tốt đẹp ấy.
+      </p>
 
-          <p class="letter-line signature">Chúc Huyên một ngày 20/10 thật đẹp ♡</p>
-        </article>
+      <p class="letter-line signature">
+        Chúc Huyên một ngày 20/10 thật đẹp. ♡
+      </p>
+    </article>
 
-        <div style="margin-top:25px">
-          <button class="primary" id="toGardenButton">Đến khu vườn nhỏ 🌸</button>
-        </div>
-      </div>
-    </section>
+    <div class="actions">
+      <button class="secondary" id="backToEnvelope">← Trở lại</button>
+      <button class="primary" id="toPersonalNote">Một lời nhắn riêng ♡</button>
+    </div>
+  </div>
+</section>
 
-    <!-- Màn 4: Vườn hoa tương tác -->
-    <section class="screen" id="screen3">
-      <div class="content">
-        <div class="eyebrow">Một khu vườn dành tặng cậu</div>
-        <h2>Chọn một <span class="accent">bông hoa</span></h2>
-        <p>Mỗi bông hoa là một lời chúc nhỏ tớ dành cho cậu.</p>
+<!-- 4. PERSONAL MESSAGE -->
+<section class="screen" id="screen3">
+  <div class="content">
+    <div class="eyebrow">Một lời nhắn từ tớ gửi cậu</div>
+    <h2>Huyên <span class="accent">à,</span></h2>
 
-        <div class="garden">
-          <button class="flower" data-message="Mong những ước mơ của cậu sẽ từng bước trở thành hiện thực.">
-            <span class="bloom">🌷</span><span class="flower-label">Ước mơ</span>
-          </button>
-          <button class="flower" data-message="Mong cậu luôn có những ngày thật vui và những người bạn thật tốt bên cạnh.">
-            <span class="bloom">🌼</span><span class="flower-label">Niềm vui</span>
-          </button>
-          <button class="flower" data-message="Giữa những ngày bận rộn, mong cậu vẫn có thời gian nghỉ ngơi và yêu thương bản thân.">
-            <span class="bloom">🌸</span><span class="flower-label">Bình yên</span>
-          </button>
-          <button class="flower" data-message="Chúc cậu học tập thật tốt, tự tin với những gì mình đã nỗ lực.">
-            <span class="bloom">🌻</span><span class="flower-label">Thành công</span>
-          </button>
-          <button class="flower" data-message="Mong sự dịu dàng và tốt bụng trong cậu luôn được đáp lại bằng những điều tử tế.">
-            <span class="bloom">🪻</span><span class="flower-label">Tử tế</span>
-          </button>
-          <button class="flower" data-message="Và trên hết, mong cậu được hạnh phúc theo cách mà chính cậu mong muốn.">
-            <span class="bloom">🌹</span><span class="flower-label">Hạnh phúc</span>
-          </button>
-        </div>
+    <article class="paper">
+      <p class="paper-heading letter-line">Gửi Huyên,</p>
 
-        <div class="flower-message" id="flowerMessage" aria-live="polite">
-          Chạm vào một bông hoa nhé ♡
-        </div>
+      <p class="letter-line">
+        Có lẽ có những điều tớ không biết phải nói thế nào khi gặp cậu
+        ngoài đời, nên tớ đã chọn cách viết chúng thành những dòng chữ này.
+        Tớ không biết cậu sẽ cảm thấy thế nào khi đọc chúng, nhưng tớ hy vọng
+        cậu có thể cảm nhận được sự chân thành mà tớ đã đặt vào món quà nhỏ này.
+      </p>
 
-        <div style="margin-top:25px">
-          <button class="primary" id="toEndingButton">Lời cuối cùng ♡</button>
-        </div>
-      </div>
-    </section>
+      <p class="letter-line">
+        Tớ biết cậu xem tớ là một người bạn, và tớ tôn trọng cảm xúc ấy.
+        Tớ không viết những lời này để mong cậu phải thay đổi suy nghĩ,
+        cũng không muốn cậu cảm thấy mình cần phải đáp lại tình cảm của tớ.
+        Tớ chỉ muốn thành thật với lòng mình, rằng tớ thật sự quý mến cậu
+        và vui vì đã có một người như cậu để tớ quan tâm.
+      </p>
 
-    <!-- Màn 5: Kết thúc -->
-    <section class="screen" id="screen4">
-      <div class="petals" id="petals"></div>
-      <div class="content fade-in">
-        <div class="eyebrow">Và điều cuối cùng...</div>
-        <div class="ending-rose">🌹</div>
-        <h2>Chúc cậu luôn <span class="accent">hạnh phúc</span></h2>
-        <div class="rule"></div>
-        <p>
-          Cảm ơn Huyên vì đã đọc đến tận đây.<br>
-          Mong rằng món quà nhỏ này có thể khiến cậu mỉm cười,
-          dù chỉ một chút thôi.
-        </p>
-        <p>
-          Có những điều không cần phải vội vàng.
-          Tớ sẽ cứ tiếp tục sống tốt, học tập và trưởng thành hơn.
-          Còn cậu, hãy cứ là chính mình nhé.
-        </p>
-        <p class="signature">Mong mọi điều dịu dàng sẽ đến với cậu.</p>
-        <p class="tiny">20 · 10 · Một lời chúc chân thành dành cho Huyên</p>
-        <button class="secondary" id="replayButton">Đọc lại món quà ↺</button>
-      </div>
-    </section>
-  </main>
+      <p class="letter-line">
+        Tớ vẫn sẽ tiếp tục cố gắng, học tập tốt hơn, trưởng thành hơn
+        và hoàn thiện bản thân từng ngày. Có thể tớ vẫn còn nhiều thiếu sót,
+        vẫn còn những điều chưa biết cách thể hiện sao cho đúng, nhưng tớ
+        muốn học cách trở thành một người biết quan tâm chân thành,
+        biết tôn trọng cảm xúc của người khác và biết trân trọng những
+        điều mình đang có.
+      </p>
 
-  <script>
-    (() => {
-      const screens = [...document.querySelectorAll(".screen")];
-      const dots = [...document.querySelectorAll(".dot")];
-      const music = document.getElementById("bgMusic");
-      const musicButton = document.getElementById("musicButton");
-      const envelope = document.getElementById("envelope");
-      const petals = document.getElementById("petals");
+      <p class="letter-line">
+        Tớ không thể biết tương lai sẽ đưa chúng ta đến đâu. Tớ cũng không
+        muốn dùng những lời hứa thật lớn để nói về một điều chưa ai có thể
+        chắc chắn. Tớ chỉ biết rằng, nếu một ngày nào đó cậu sẵn lòng cho tớ
+        cơ hội để chúng ta hiểu nhau hơn, tớ sẽ trân trọng điều đó.
+        Còn hiện tại, tớ mong chúng ta vẫn có thể thoải mái làm bạn,
+        cùng chia sẻ những niềm vui bình thường mà không phải bận lòng
+        vì những dòng chữ này.
+      </p>
 
-      let currentScreen = 0;
-      let musicStarted = false;
-      let petalsTimer = null;
+      <p class="letter-line">
+        Tớ nghĩ đôi khi, quý mến một người không nhất thiết phải khiến
+        người ấy trở thành của mình. Đôi khi, đó còn là việc mong người ấy
+        được vui vẻ, được sống đúng với những gì mình mong muốn và được
+        hạnh phúc, kể cả khi con đường sau này của hai người không giống nhau.
+      </p>
 
-      function showScreen(index) {
-        currentScreen = index;
-        screens.forEach((screen, i) => {
-          screen.classList.toggle("active", i === index);
-        });
-        dots.forEach((dot, i) => {
-          dot.classList.toggle("active", i === index);
-        });
+      <p class="letter-line">
+        Vì vậy, Huyên à, cậu cứ sống thật vui, cứ theo đuổi những điều
+        cậu yêu thích và cứ là chính mình nhé. Đừng vì món quà này mà
+        cảm thấy mình phải đưa ra bất kỳ câu trả lời nào. Tớ chỉ mong
+        khi đọc đến đây, cậu sẽ biết rằng đã có một người dành thời gian
+        để chuẩn bị cho cậu một món quà nhỏ, với tất cả sự trân trọng
+        và những lời chúc tốt đẹp nhất.
+      </p>
 
-        window.scrollTo({ top: 0, behavior: "smooth" });
+      <p class="letter-line">
+        Cảm ơn cậu vì đã đọc đến những dòng cuối cùng. Chúc cậu luôn
+        bình an, luôn được yêu thương và luôn tìm thấy hạnh phúc
+        theo cách của riêng mình.
+      </p>
 
-        if (index === 2) revealLetter();
-        if (index === 4) startPetals();
-        else stopPetals();
-      }
+      <p class="letter-line signature">
+        — Một lời nhắn chân thành từ Vũ gửi Huyên. ♡
+      </p>
+    </article>
 
-      async function startMusic() {
-        if (musicStarted) return;
-        musicStarted = true;
+    <div class="actions">
+      <button class="secondary" id="backToWish">← Đọc lại lời chúc</button>
+      <button class="primary" id="toGarden">Đến khu vườn nhỏ 🌸</button>
+    </div>
+  </div>
+</section>
 
-        try {
-          await music.play();
-          musicButton.textContent = "♫";
-          musicButton.title = "Tắt nhạc";
-        } catch (error) {
-          musicStarted = false;
-          musicButton.textContent = "♪";
-          musicButton.title = "Chưa phát được nhạc — kiểm tra file doi-52hz.mp3";
-          console.warn("Không phát được nhạc. Hãy kiểm tra file doi-52hz.mp3.", error);
+<!-- 5. INTERACTIVE GARDEN -->
+<section class="screen" id="screen4">
+  <div class="content">
+    <div class="eyebrow">Một khu vườn dành tặng cậu</div>
+    <h2>Chọn một <span class="accent">bông hoa</span></h2>
+    <p>Mỗi bông hoa là một lời chúc nhỏ tớ dành cho cậu.</p>
+
+    <div class="garden">
+      <button class="flower-card" data-message="Mong những ước mơ của cậu sẽ từng bước trở thành hiện thực.">
+        <span class="bloom">🌷</span><span class="flower-label">Ước mơ</span>
+      </button>
+      <button class="flower-card" data-message="Mong cậu luôn có những ngày thật vui và những người bạn thật tốt bên cạnh.">
+        <span class="bloom">🌼</span><span class="flower-label">Niềm vui</span>
+      </button>
+      <button class="flower-card" data-message="Giữa những ngày bận rộn, mong cậu vẫn có thời gian nghỉ ngơi và yêu thương bản thân.">
+        <span class="bloom">🌸</span><span class="flower-label">Bình yên</span>
+      </button>
+      <button class="flower-card" data-message="Chúc cậu học tập thật tốt, tự tin với những gì cậu đã nỗ lực.">
+        <span class="bloom">🌻</span><span class="flower-label">Thành công</span>
+      </button>
+      <button class="flower-card" data-message="Mong sự dịu dàng và tốt bụng trong cậu luôn được đáp lại bằng những điều tử tế.">
+        <span class="bloom">🪻</span><span class="flower-label">Tử tế</span>
+      </button>
+      <button class="flower-card" data-message="Mong cậu được hạnh phúc theo cách mà chính cậu mong muốn.">
+        <span class="bloom">🌹</span><span class="flower-label">Hạnh phúc</span>
+      </button>
+    </div>
+
+    <div class="flower-message" id="flowerMessage" aria-live="polite">
+      Chạm vào một bông hoa nhé ♡
+    </div>
+
+    <div class="actions">
+      <button class="secondary" id="backToNote">← Trở lại bức thư</button>
+      <button class="primary" id="toEnding">Lời cuối cùng ♡</button>
+    </div>
+  </div>
+</section>
+
+<!-- 6. ENDING -->
+<section class="screen" id="screen5">
+  <div class="petals" id="petals"></div>
+
+  <div class="content">
+    <div class="eyebrow">Và điều cuối cùng...</div>
+    <div class="ending-rose">🌹</div>
+    <h2>Chúc cậu luôn<br><span class="accent">hạnh phúc</span></h2>
+    <div class="rule"></div>
+
+    <p>
+      Cảm ơn Huyên vì đã dành thời gian đọc món quà nhỏ này.<br>
+      Mong rằng nó có thể khiến cậu mỉm cười,<br>
+      dù chỉ một chút thôi.
+    </p>
+
+    <p>
+      Có những điều không cần phải vội vàng.<br>
+      Có những tình cảm chỉ cần được giữ gìn bằng sự chân thành.<br>
+      Và có những lời chúc, dù giản dị, vẫn luôn được gửi đi<br>
+      với mong muốn người nhận sẽ có một ngày thật đẹp.
+    </p>
+
+    <p class="signature">Mong mọi điều dịu dàng sẽ đến với cậu. ♡</p>
+    <p class="tiny">20 · 10 · Một lời chúc chân thành dành cho Huyên</p>
+
+    <div class="actions">
+      <button class="secondary" id="replayButton">Đọc lại món quà ↺</button>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+(() => {
+  const screens = [...document.querySelectorAll(".screen")];
+  const dots = [...document.querySelectorAll(".dot")];
+  const music = document.getElementById("bgMusic");
+  const musicButton = document.getElementById("musicButton");
+  const musicCaption = document.getElementById("musicCaption");
+  const envelope = document.getElementById("envelope");
+  const petals = document.getElementById("petals");
+
+  let currentScreen = 0;
+  let petalsTimer = null;
+
+  function showScreen(index) {
+    currentScreen = index;
+
+    screens.forEach((screen, i) => {
+      screen.classList.toggle("active", i === index);
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
+    });
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+    if (index === 2) revealLines("#screen2");
+    if (index === 3) revealLines("#screen3");
+
+    stopPetals();
+    if (index === 5) startPetals();
+  }
+
+  function revealLines(selector) {
+    const lines = document.querySelectorAll(selector + " .letter-line");
+
+    lines.forEach(line => line.classList.remove("visible"));
+
+    lines.forEach((line, index) => {
+      setTimeout(() => {
+        if (currentScreen === (selector === "#screen2" ? 2 : 3)) {
+          line.classList.add("visible");
         }
+      }, 250 + index * 420);
+    });
+  }
+
+  async function toggleMusic() {
+    if (music.paused) {
+      try {
+        await music.play();
+        musicButton.classList.add("playing");
+        musicButton.textContent = "♫";
+        musicCaption.textContent = "Đang phát nhạc ♡";
+      } catch (error) {
+        musicCaption.textContent = "Kiểm tra file doi-52hz.mp3";
+        console.warn("Không phát được âm thanh:", error);
       }
+    } else {
+      music.pause();
+      musicButton.classList.remove("playing");
+      musicButton.textContent = "♪";
+      musicCaption.textContent = "Nhạc đang tạm dừng";
+    }
+  }
 
-      document.getElementById("startButton").addEventListener("click", async () => {
-        await startMusic();
-        showScreen(1);
+  document.getElementById("startButton").addEventListener("click", async () => {
+    // Bắt đầu nhạc trong lần tương tác đầu tiên của người dùng.
+    try {
+      await music.play();
+      musicButton.classList.add("playing");
+      musicButton.textContent = "♫";
+      musicCaption.textContent = "Đang phát nhạc ♡";
+    } catch (error) {
+      musicCaption.textContent = "Có thể thêm file nhạc để nghe";
+    }
+    showScreen(1);
+  });
+
+  musicButton.addEventListener("click", toggleMusic);
+
+  function openEnvelope() {
+    envelope.classList.add("opened");
+    document.getElementById("openLetterButton").textContent = "Đọc bức thư ♡";
+  }
+
+  envelope.addEventListener("click", openEnvelope);
+
+  envelope.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openEnvelope();
+    }
+  });
+
+  document.getElementById("openLetterButton").addEventListener("click", () => {
+    openEnvelope();
+    setTimeout(() => showScreen(2), 450);
+  });
+
+  document.getElementById("backToEnvelope").addEventListener("click", () => showScreen(1));
+  document.getElementById("toPersonalNote").addEventListener("click", () => showScreen(3));
+  document.getElementById("backToWish").addEventListener("click", () => showScreen(2));
+  document.getElementById("toGarden").addEventListener("click", () => showScreen(4));
+  document.getElementById("backToNote").addEventListener("click", () => showScreen(3));
+  document.getElementById("toEnding").addEventListener("click", () => showScreen(5));
+
+  document.querySelectorAll(".flower-card").forEach(flower => {
+    flower.setAttribute("aria-pressed", "false");
+
+    flower.addEventListener("click", () => {
+      document.getElementById("flowerMessage").textContent = flower.dataset.message;
+
+      document.querySelectorAll(".flower-card").forEach(item => {
+        item.setAttribute("aria-pressed", String(item === flower));
       });
+    });
+  });
 
-      function openEnvelope() {
-        envelope.classList.add("opened");
-        document.getElementById("openLetterButton").textContent = "Đọc bức thư ♡";
-      }
+  function makePetal() {
+    if (currentScreen !== 5 || document.hidden) return;
 
-      envelope.addEventListener("click", openEnvelope);
-      envelope.addEventListener("keydown", event => {
-        if (event.key === "Enter" || event.key === " ") {
-          event.preventDefault();
-          openEnvelope();
-        }
-      });
+    const petal = document.createElement("span");
+    petal.className = "petal";
+    petal.textContent = Math.random() > .5 ? "🌸" : "🌷";
+    petal.style.left = Math.random() * 100 + "vw";
+    petal.style.fontSize = (12 + Math.random() * 14) + "px";
+    petal.style.animationDuration = (6 + Math.random() * 7) + "s";
+    petal.style.setProperty("--drift", (Math.random() * 180 - 90) + "px");
 
-      document.getElementById("openLetterButton").addEventListener("click", () => {
-        openEnvelope();
-        setTimeout(() => showScreen(2), 500);
-      });
+    petals.appendChild(petal);
+    setTimeout(() => petal.remove(), 14000);
+  }
 
-      function revealLetter() {
-        const lines = document.querySelectorAll("#screen2 .letter-line");
-        lines.forEach((line, index) => {
-          line.classList.remove("visible");
-          setTimeout(() => line.classList.add("visible"), 350 + index * 650);
-        });
-      }
+  function startPetals() {
+    stopPetals();
 
-      document.getElementById("toGardenButton").addEventListener("click", () => showScreen(3));
-      document.getElementById("toEndingButton").addEventListener("click", () => showScreen(4));
+    for (let i = 0; i < 12; i++) {
+      setTimeout(makePetal, i * 180);
+    }
 
-      document.querySelectorAll(".flower").forEach(flower => {
-        flower.addEventListener("click", () => {
-          document.getElementById("flowerMessage").textContent = flower.dataset.message;
-          document.querySelectorAll(".flower").forEach(item => {
-            item.setAttribute("aria-pressed", String(item === flower));
-          });
-        });
-      });
+    petalsTimer = setInterval(makePetal, 650);
+  }
 
-      musicButton.addEventListener("click", async () => {
-        if (music.paused) {
-          try {
-            await music.play();
-            musicStarted = true;
-            musicButton.textContent = "♫";
-            musicButton.title = "Tắt nhạc";
-          } catch (error) {
-            musicButton.title = "Không phát được nhạc. Hãy kiểm tra file âm thanh.";
-          }
-        } else {
-          music.pause();
-          musicStarted = false;
-          musicButton.textContent = "♪";
-          musicButton.title = "Bật nhạc";
-        }
-      });
+  function stopPetals() {
+    if (petalsTimer) clearInterval(petalsTimer);
+    petalsTimer = null;
+    petals.replaceChildren();
+  }
 
-      function makePetal() {
-        if (currentScreen !== 4 || document.hidden) return;
+  document.addEventListener("visibilitychange", () => {
+    if (document.hidden) {
+      stopPetals();
+    } else if (currentScreen === 5) {
+      startPetals();
+    }
+  });
 
-        const petal = document.createElement("span");
-        petal.className = "petal";
-        petal.textContent = Math.random() > .5 ? "🌸" : "🌷";
-        petal.style.left = Math.random() * 100 + "vw";
-        petal.style.fontSize = (12 + Math.random() * 14) + "px";
-        petal.style.animationDuration = (6 + Math.random() * 7) + "s";
-        petal.style.setProperty("--drift", (Math.random() * 180 - 90) + "px");
-        petals.appendChild(petal);
-        setTimeout(() => petal.remove(), 14000);
-      }
+  document.getElementById("replayButton").addEventListener("click", () => {
+    stopPetals();
+    envelope.classList.remove("opened");
 
-      function startPetals() {
-        stopPetals();
-        for (let i = 0; i < 12; i++) {
-          setTimeout(makePetal, i * 180);
-        }
-        petalsTimer = setInterval(makePetal, 650);
-      }
+    document.getElementById("openLetterButton").textContent = "Mở thư của cậu";
+    document.getElementById("flowerMessage").textContent = "Chạm vào một bông hoa nhé ♡";
 
-      function stopPetals() {
-        if (petalsTimer) clearInterval(petalsTimer);
-        petalsTimer = null;
-        petals.replaceChildren();
-      }
+    document.querySelectorAll(".flower-card").forEach(item => {
+      item.setAttribute("aria-pressed", "false");
+    });
 
-      document.getElementById("replayButton").addEventListener("click", () => {
-        stopPetals();
-        envelope.classList.remove("opened");
-        document.getElementById("openLetterButton").textContent = "Mở thư của cậu";
-        document.getElementById("flowerMessage").textContent = "Chạm vào một bông hoa nhé ♡";
-        showScreen(0);
-      });
+    showScreen(0);
+  });
+})();
+</script>
 
-      document.addEventListener("visibilitychange", () => {
-        if (document.hidden) stopPetals();
-        else if (currentScreen === 4) startPetals();
-      });
-    })();
-  </script>
 </body>
 </html>
