@@ -825,7 +825,7 @@ p {
     }
   }
 
-  document.getElementById("startButton").addEventListener("click", async () => {
+  const startButton = document.getElementById("startButton");  startButton.addEventListener("click", () => {   const music = document.getElementById("bgMusic");    // Chuyển màn hình ngay, không chờ nhạc tải.   showScreen(1);    // Thử phát nhạc sau khi người dùng chạm.   music.play().then(() => {     musicButton.classList.add("playing");     musicButton.textContent = "♫";     musicCaption.textContent = "Đang phát nhạc ♡";   }).catch(() => {     musicCaption.textContent = "Nhạc chưa phát được";   }); }); async () => {
     // Bắt đầu nhạc trong lần tương tác đầu tiên của người dùng.
     try {
       await music.play();
