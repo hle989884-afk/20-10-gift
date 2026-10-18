@@ -407,6 +407,166 @@ p {
   font: 24px/1.5 "Cormorant Garamond", Georgia, serif;
 }
 
+
+/* Flower-bloom transition */
+.bloom-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 48%, #6b344e 0%, #32182e 38%, #190d19 78%);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .65s ease, visibility .65s ease;
+}
+.bloom-transition.active {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+.bloom-scene {
+  width: min(82vw, 360px);
+  text-align: center;
+}
+.bloom-flower {
+  position: relative;
+  width: 190px;
+  height: 205px;
+  margin: 0 auto 24px;
+  transform: scale(.72);
+  opacity: 0;
+}
+.bloom-transition.active .bloom-flower {
+  animation: flowerRise .75s ease-out forwards;
+}
+.bloom-petal {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: 54px;
+  height: 82px;
+  margin-left: -27px;
+  margin-top: -72px;
+  border-radius: 55% 55% 45% 45%;
+  transform-origin: 50% 100%;
+  background: linear-gradient(145deg, #ffe1e4, #e8a3bb 65%, #b85f86);
+  box-shadow: inset -5px -5px 12px #8d3c6250, 0 0 22px #f6b7d233;
+  opacity: .12;
+}
+.bloom-petal:nth-child(1) { transform: rotate(0deg) scale(.25); }
+.bloom-petal:nth-child(2) { transform: rotate(45deg) scale(.25); }
+.bloom-petal:nth-child(3) { transform: rotate(90deg) scale(.25); }
+.bloom-petal:nth-child(4) { transform: rotate(135deg) scale(.25); }
+.bloom-petal:nth-child(5) { transform: rotate(180deg) scale(.25); }
+.bloom-petal:nth-child(6) { transform: rotate(225deg) scale(.25); }
+.bloom-petal:nth-child(7) { transform: rotate(270deg) scale(.25); }
+.bloom-petal:nth-child(8) { transform: rotate(315deg) scale(.25); }
+.bloom-transition.active .bloom-petal {
+  animation: petalBloom 1.45s cubic-bezier(.2,.8,.2,1) forwards;
+}
+.bloom-petal:nth-child(2) { animation-delay: .08s; }
+.bloom-petal:nth-child(3) { animation-delay: .16s; }
+.bloom-petal:nth-child(4) { animation-delay: .24s; }
+.bloom-petal:nth-child(5) { animation-delay: .32s; }
+.bloom-petal:nth-child(6) { animation-delay: .40s; }
+.bloom-petal:nth-child(7) { animation-delay: .48s; }
+.bloom-petal:nth-child(8) { animation-delay: .56s; }
+.bloom-center {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 -14px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fff2c9, #e8c17d 70%);
+  box-shadow: 0 0 25px #f3d6a966;
+  transform: scale(0);
+}
+.bloom-transition.active .bloom-center {
+  animation: centerGlow .6s ease 1s forwards;
+}
+.bloom-stem {
+  position: absolute;
+  width: 5px;
+  height: 74px;
+  left: calc(50% - 2px);
+  top: 53%;
+  border-radius: 9px;
+  background: linear-gradient(#8ab58a, #456c50);
+  transform: scaleY(0);
+  transform-origin: top;
+}
+.bloom-transition.active .bloom-stem {
+  animation: stemGrow .7s ease .25s forwards;
+}
+.bloom-leaf {
+  position: absolute;
+  width: 34px;
+  height: 17px;
+  left: calc(50% + 1px);
+  top: 70%;
+  border-radius: 100% 0 100% 0;
+  background: linear-gradient(135deg, #a6c79a, #527d5c);
+  transform: rotate(-25deg) scale(0);
+  transform-origin: left center;
+}
+.bloom-transition.active .bloom-leaf {
+  animation: leafGrow .5s ease .8s forwards;
+}
+.bloom-title {
+  color: #f8dce5;
+  font: italic 30px "Cormorant Garamond", Georgia, serif;
+  letter-spacing: .5px;
+  opacity: 0;
+  transform: translateY(8px);
+}
+.bloom-transition.active .bloom-title {
+  animation: bloomText .8s ease 1.2s forwards;
+}
+.bloom-subtitle {
+  margin-top: 8px;
+  color: #d7b8c8;
+  font-size: 10px;
+  letter-spacing: 3px;
+  opacity: 0;
+}
+.bloom-transition.active .bloom-subtitle {
+  animation: bloomText .7s ease 1.55s forwards;
+}
+@keyframes flowerRise {
+  to { transform: scale(1); opacity: 1; }
+}
+@keyframes petalBloom {
+  0% { opacity: .12; transform: rotate(var(--unused, 0deg)) scale(.25); }
+  100% { opacity: 1; transform: rotate(var(--unused, 0deg)) scale(1); }
+}
+@keyframes centerGlow {
+  to { transform: scale(1); }
+}
+@keyframes stemGrow {
+  to { transform: scaleY(1); }
+}
+@keyframes leafGrow {
+  to { transform: rotate(-25deg) scale(1); }
+}
+@keyframes bloomText {
+  to { opacity: 1; transform: translateY(0); }
+}
+.bloom-transition.leaving {
+  opacity: 0;
+  visibility: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+  .bloom-transition, .bloom-transition * {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+
 /* Ending petals */
 .petals {
   position: fixed;
@@ -468,7 +628,28 @@ p {
 </style>
 </head>
 
+
 <body>
+<div class="bloom-transition" id="bloomTransition" aria-hidden="true">
+  <div class="bloom-scene">
+    <div class="bloom-flower" aria-hidden="true">
+      <span class="bloom-petal" style="--unused:0deg"></span>
+      <span class="bloom-petal" style="--unused:45deg"></span>
+      <span class="bloom-petal" style="--unused:90deg"></span>
+      <span class="bloom-petal" style="--unused:135deg"></span>
+      <span class="bloom-petal" style="--unused:180deg"></span>
+      <span class="bloom-petal" style="--unused:225deg"></span>
+      <span class="bloom-petal" style="--unused:270deg"></span>
+      <span class="bloom-petal" style="--unused:315deg"></span>
+      <span class="bloom-center"></span>
+      <span class="bloom-stem"></span>
+      <span class="bloom-leaf"></span>
+    </div>
+    <div class="bloom-title">Một đóa hoa dành cho Huyên</div>
+    <div class="bloom-subtitle">MỘT MÓN QUÀ NHỎ ♡</div>
+  </div>
+</div>
+
 
 <!-- Upload file audio được phép sử dụng với tên doi-52hz.mp3 -->
 <audio id="bgMusic" loop preload="none">
@@ -768,6 +949,7 @@ p {
   const musicCaption = document.getElementById("musicCaption");
   const envelope = document.getElementById("envelope");
   const petals = document.getElementById("petals");
+  const bloomTransition = document.getElementById("bloomTransition");
 
   let currentScreen = 0;
   let petalsTimer = null;
@@ -827,10 +1009,7 @@ p {
 
   const startButton = document.getElementById("startButton");
   startButton.addEventListener("click", () => {
-    // Chuyển màn hình ngay cả khi file nhạc chưa có hoặc không phát được.
-    showScreen(1);
-
-    // Thử phát nhạc sau thao tác chạm của người dùng.
+    // Bắt đầu nhạc từ thao tác chạm đầu tiên (phù hợp giới hạn autoplay trên điện thoại).
     music.play().then(() => {
       musicButton.classList.add("playing");
       musicButton.textContent = "♫";
@@ -839,6 +1018,21 @@ p {
       musicCaption.textContent = "Kiểm tra file doi-52hz.mp3";
       console.warn("Không phát được âm thanh:", error);
     });
+
+    // Hoa nở xong sẽ chuyển thẳng tới lá thư, bỏ qua màn phong bì.
+    bloomTransition.classList.add("active");
+    bloomTransition.setAttribute("aria-hidden", "false");
+    startButton.disabled = true;
+
+    window.setTimeout(() => {
+      showScreen(2);
+      bloomTransition.classList.add("leaving");
+      window.setTimeout(() => {
+        bloomTransition.classList.remove("active", "leaving");
+        bloomTransition.setAttribute("aria-hidden", "true");
+        startButton.disabled = false;
+      }, 700);
+    }, 3200);
   });
 
   musicButton.addEventListener("click", toggleMusic);
@@ -922,6 +1116,8 @@ p {
 
   document.getElementById("replayButton").addEventListener("click", () => {
     stopPetals();
+    bloomTransition.classList.remove("active", "leaving");
+    bloomTransition.setAttribute("aria-hidden", "true");
     envelope.classList.remove("opened");
 
     document.getElementById("openLetterButton").textContent = "Mở thư của cậu";
