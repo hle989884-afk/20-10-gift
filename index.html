@@ -803,11 +803,87 @@ body:not(.gift-unlocked) { overflow: hidden; }
     transition-duration: .01ms !important;
   }
 }
+
+
+/* CINEMATIC UPGRADE — ambient stars, lens glow and film-like scene changes */
+.cinema-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .72;
+}
+.screen {
+  overflow: hidden;
+}
+.screen::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  inset: -35% -70%;
+  pointer-events: none;
+  background: linear-gradient(112deg, transparent 42%, #f9dce51a 48%, #f7d9c91c 50%, transparent 57%);
+  transform: translateX(-70%) rotate(-7deg);
+  opacity: 0;
+}
+.screen.active::before {
+  animation: lensSweep 1.8s ease-out .15s both;
+}
+.screen.active .content {
+  animation: filmReveal 1.1s cubic-bezier(.2,.7,.2,1) both;
+}
+.password-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 30%, #09050c8a 100%);
+}
+.password-card { position: relative; z-index: 1; }
+.sky-particle-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+.sky-finale.active { animation: skyReveal .9s cubic-bezier(.2,.7,.2,1) both; }
+.sky-finale .sky-message { text-shadow: 0 3px 24px #ffffff80; }
+.sky-finale .sky-signoff { z-index: 3; }
+.sky-finale::before, .sky-finale::after { z-index: 0; }
+@keyframes lensSweep {
+  0% { opacity: 0; transform: translateX(-70%) rotate(-7deg); }
+  22% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(70%) rotate(-7deg); }
+}
+@keyframes filmReveal {
+  from { opacity: 0; filter: blur(8px); transform: translateY(18px) scale(.985); }
+  to { opacity: 1; filter: blur(0); transform: translateY(0) scale(1); }
+}
+@keyframes skyReveal {
+  from { opacity: 0; filter: saturate(.6) brightness(.7); }
+  to { opacity: 1; filter: saturate(1) brightness(1); }
+}
+@media (max-width: 600px) {
+  .eyebrow { letter-spacing: 2.5px; }
+  .screen { padding-top: max(68px, calc(45px + env(safe-area-inset-top))); padding-bottom: max(74px, calc(55px + env(safe-area-inset-bottom))); }
+  .paper { padding: 23px 19px; }
+  .paper p { font-size: 13px; line-height: 1.95; }
+  .primary, .secondary { min-height: 46px; padding: 12px 19px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .screen.active .content, .screen.active::before, .sky-finale.active { animation: none !important; }
+}
+
 </style>
 </head>
 
 
 <body>
+<canvas class="cinema-canvas" id="cinemaCanvas" aria-hidden="true"></canvas>
 <div class="password-screen" id="passwordScreen">
   <div class="password-card">
     <div class="lock-flower">🌷</div>
@@ -816,8 +892,8 @@ body:not(.gift-unlocked) { overflow: hidden; }
     <div class="rule"></div>
     <p>Nhập ngày đặc biệt của cậu để mở món quà nhé ♡</p>
     <form id="passwordForm">
-      <input class="password-input" id="passwordInput" type="text"
-             inputmode="text" autocomplete="off" autocapitalize="off" spellcheck="false"
+      <input class="password-input" id="passwordInput" type="password"
+             inputmode="numeric" autocomplete="off" autocapitalize="off" spellcheck="false"
              placeholder="Nhập mật khẩu" aria-label="Mật khẩu ngày sinh" maxlength="10" required>
       <button class="primary" type="submit">Mở món quà ♡</button>
     </form>
@@ -826,6 +902,7 @@ body:not(.gift-unlocked) { overflow: hidden; }
   </div>
 </div>
 <div class="sky-finale" id="skyFinale" aria-hidden="true">
+  <canvas class="sky-particle-canvas" id="skyParticleCanvas" aria-hidden="true"></canvas>
   <div class="sky-message" id="skyMessage">Chúc Huyên luôn hạnh phúc ♡</div>
   <div class="sky-signoff">MONG NHỮNG ĐIỀU DỊU DÀNG SẼ ĐẾN VỚI CẬU</div>
 </div>
@@ -1140,7 +1217,7 @@ body:not(.gift-unlocked) { overflow: hidden; }
 </main>
 
 <script>
-// Mở khóa bằng ngày sinh; chấp nhận 23/07, 2307, 23-07 hoặc 23.07.
+// Xử lý mở khóa ở phía trình duyệt bằng mã băm; ô nhập không hiển thị ký tự mật khẩu.
 (() => {
   const form = document.getElementById("passwordForm");
   const input = document.getElementById("passwordInput");
@@ -1149,11 +1226,16 @@ body:not(.gift-unlocked) { overflow: hidden; }
   if (!form || !input || !screen || !error) return;
 
   let unlocked = false;
-  function unlock(event) {
+  async function unlock(event) {
     if (event) event.preventDefault();
     if (unlocked) return;
     const normalized = (input.value || "").trim().replace(/\s/g, "").replace(/[^0-9]/g, "");
-    if (normalized === "2307") {
+    // Store a SHA-256 digest rather than a readable passphrase in the page source.
+    // This is a visual gate for a static gift page, not server-grade authentication.
+    const encoder = new TextEncoder();
+    const digest = await crypto.subtle.digest("SHA-256", encoder.encode(normalized));
+    const fingerprint = Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, "0")).join("");
+    if (fingerprint === "07aa2015d482734372d4a9a1c07c8290198526b9ce1fd2e2dcff4d05f6792a29") {
       unlocked = true;
       document.body.classList.add("gift-unlocked");
       error.textContent = "";
@@ -1163,7 +1245,7 @@ body:not(.gift-unlocked) { overflow: hidden; }
       screen.style.pointerEvents = "none";
       window.setTimeout(() => { screen.style.display = "none"; }, 560);
     } else {
-      error.textContent = "Mật khẩu chưa đúng rồi, thử nhập 23/07 nhé ♡";
+      error.textContent = "Mật khẩu chưa đúng rồi, thử lại nhé ♡";
       input.value = "";
       input.focus();
     }
@@ -1196,6 +1278,48 @@ body:not(.gift-unlocked) { overflow: hidden; }
 
   let currentScreen = 0;
   let petalsTimer = null;
+
+  // Lightweight ambient starfield: capped particle count for mobile performance.
+  const cinemaCanvas = document.getElementById("cinemaCanvas");
+  const cinemaCtx = cinemaCanvas.getContext("2d", { alpha: true });
+  let stars = [];
+  let cinemaFrame = 0;
+  function resizeCinema() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    cinemaCanvas.width = Math.floor(window.innerWidth * dpr);
+    cinemaCanvas.height = Math.floor(window.innerHeight * dpr);
+    cinemaCanvas.style.width = window.innerWidth + "px";
+    cinemaCanvas.style.height = window.innerHeight + "px";
+    cinemaCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const count = window.innerWidth < 600 ? 42 : 78;
+    stars = Array.from({ length: count }, () => ({
+      x: Math.random() * window.innerWidth,
+      y: Math.random() * window.innerHeight,
+      r: .35 + Math.random() * 1.25,
+      phase: Math.random() * Math.PI * 2,
+      speed: .003 + Math.random() * .012,
+      drift: (Math.random() - .5) * .08
+    }));
+  }
+  function paintCinema() {
+    const w = window.innerWidth, h = window.innerHeight;
+    cinemaCtx.clearRect(0, 0, w, h);
+    stars.forEach(star => {
+      star.phase += star.speed;
+      star.x += star.drift;
+      if (star.x < -3) star.x = w + 3;
+      if (star.x > w + 3) star.x = -3;
+      const alpha = .16 + (Math.sin(star.phase) + 1) * .25;
+      cinemaCtx.beginPath();
+      cinemaCtx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+      cinemaCtx.fillStyle = `rgba(255,220,231,${alpha})`;
+      cinemaCtx.fill();
+    });
+    cinemaFrame = requestAnimationFrame(paintCinema);
+  }
+  resizeCinema();
+  paintCinema();
+  window.addEventListener("resize", resizeCinema, { passive: true });
 
   function showScreen(index) {
     currentScreen = index;
@@ -1253,11 +1377,10 @@ body:not(.gift-unlocked) { overflow: hidden; }
 
   // Kiểm tra mật khẩu được xử lý bởi trình xử lý độc lập phía trên.
 
+  let skyAnimationFrame = 0;
   function launchSkyFinale() {
     const sourceText = "Chúc Huyên luôn hạnh phúc ♡";
     skyMessage.replaceChildren();
-    // Segment by visible characters (graphemes), so Vietnamese accents stay attached
-    // to their base letters instead of flying as separate marks.
     const characters = typeof Intl.Segmenter === "function"
       ? [...new Intl.Segmenter("vi", { granularity: "grapheme" }).segment(sourceText)].map(item => item.segment)
       : Array.from(sourceText.normalize("NFC"));
@@ -1271,26 +1394,90 @@ body:not(.gift-unlocked) { overflow: hidden; }
       skyMessage.appendChild(span);
     });
 
+    skyFinale.querySelectorAll(".sky-petal").forEach(petal => petal.remove());
     skyFinale.classList.add("active");
     skyFinale.setAttribute("aria-hidden", "false");
+
     const chars = [...skyMessage.querySelectorAll(".letter-char")];
-    // Let the message rest briefly against the blue sky, then each character drifts away like a petal.
-    window.setTimeout(() => {
-      chars.forEach((character) => character.classList.add("fly"));
-      for (let i = 0; i < 42; i++) {
-        window.setTimeout(() => {
-          const petal = document.createElement("span");
-          petal.className = "sky-petal";
-          petal.style.setProperty("--left", (Math.random() * 100) + "%");
-          petal.style.setProperty("--size", (8 + Math.random() * 12) + "px");
-          petal.style.setProperty("--duration", (4 + Math.random() * 3) + "s");
-          petal.style.setProperty("--delay", (Math.random() * 450) + "ms");
-          petal.style.setProperty("--drift", (Math.random() * 180 - 90) + "px");
-          petal.style.setProperty("--rotation", (Math.random() * 360) + "deg");
-          skyFinale.appendChild(petal);
-          window.setTimeout(() => petal.remove(), 8000);
-        }, i * 85);
+    const canvas = document.getElementById("skyParticleCanvas");
+    const ctx = canvas.getContext("2d", { alpha: true });
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let particles = [];
+    let startTime = 0;
+    const dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = width + "px";
+    canvas.style.height = height + "px";
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    // A cinematic burst of over a thousand petals, with a smaller cap on phones.
+    const count = reducedMotion ? 90 : (width < 600 ? 1050 : 1650);
+    for (let i = 0; i < count; i++) {
+      const angle = -Math.PI / 2 + (Math.random() - .5) * 2.35;
+      const speed = 45 + Math.random() * (width < 600 ? 145 : 210);
+      particles.push({
+        x: width * (.38 + Math.random() * .24),
+        y: height * (.47 + Math.random() * .14),
+        vx: Math.cos(angle) * speed + (Math.random() - .5) * 55,
+        vy: Math.sin(angle) * speed - (20 + Math.random() * 100),
+        gravity: -5 - Math.random() * 18,
+        size: 2.8 + Math.random() * (width < 600 ? 5 : 6.5),
+        rotation: Math.random() * Math.PI * 2,
+        spin: (Math.random() - .5) * 5,
+        life: 3.4 + Math.random() * 4.1,
+        delay: Math.random() * 1.4,
+        hue: Math.random() < .22 ? "gold" : (Math.random() < .5 ? "light" : "rose"),
+        sway: (Math.random() - .5) * 25
+      });
+    }
+
+    if (skyAnimationFrame) cancelAnimationFrame(skyAnimationFrame);
+    function frame(now) {
+      if (!startTime) startTime = now;
+      const elapsed = (now - startTime) / 1000;
+      ctx.clearRect(0, 0, width, height);
+      let alive = 0;
+      for (const p of particles) {
+        const t = elapsed - p.delay;
+        if (t < 0) { alive++; continue; }
+        if (t >= p.life) continue;
+        alive++;
+        const progress = t / p.life;
+        const x = p.x + p.vx * t + Math.sin(t * 2.1 + p.rotation) * p.sway * t * .55;
+        const y = p.y + p.vy * t + .5 * p.gravity * t * t;
+        const alpha = Math.min(1, t * 3.5) * Math.pow(1 - progress, .72);
+        const length = p.size * 1.75;
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.rotate(p.rotation + p.spin * t);
+        ctx.globalAlpha = alpha;
+        ctx.beginPath();
+        ctx.moveTo(0, -length * .65);
+        ctx.bezierCurveTo(p.size * 1.1, -length * .25, p.size * .9, length * .45, 0, length * .65);
+        ctx.bezierCurveTo(-p.size * .9, length * .35, -p.size * 1.1, -length * .25, 0, -length * .65);
+        if (p.hue === "gold") ctx.fillStyle = "#f8dba0";
+        else if (p.hue === "light") ctx.fillStyle = "#fff5f7";
+        else ctx.fillStyle = progress < .5 ? "#eaa0bd" : "#cf6f98";
+        ctx.shadowColor = p.hue === "gold" ? "#ffe7b0" : "#f8c4d7";
+        ctx.shadowBlur = width < 600 ? 3 : 6;
+        ctx.fill();
+        ctx.restore();
       }
+      if (alive > 0 && elapsed < 9) {
+        skyAnimationFrame = requestAnimationFrame(frame);
+      } else {
+        ctx.clearRect(0, 0, width, height);
+        skyAnimationFrame = 0;
+      }
+    }
+
+    // Let the words breathe for a moment before they dissolve into the petal burst.
+    window.setTimeout(() => {
+      chars.forEach(character => character.classList.add("fly"));
+      skyAnimationFrame = requestAnimationFrame(frame);
     }, 950);
   }
 
@@ -1407,6 +1594,10 @@ body:not(.gift-unlocked) { overflow: hidden; }
 
   // Tap the sky after the petals have floated away to replay the gift.
   skyFinale.addEventListener("click", () => {
+    if (skyAnimationFrame) cancelAnimationFrame(skyAnimationFrame);
+    skyAnimationFrame = 0;
+    const skyCanvas = document.getElementById("skyParticleCanvas");
+    skyCanvas.getContext("2d").clearRect(0, 0, skyCanvas.width, skyCanvas.height);
     skyFinale.classList.remove("active");
     skyFinale.setAttribute("aria-hidden", "true");
     skyFinale.querySelectorAll(".sky-petal").forEach(petal => petal.remove());
